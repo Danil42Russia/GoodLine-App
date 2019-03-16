@@ -1,6 +1,13 @@
 package ru.danil42russia.aaa
 
 //Ctrl+J
+//Ctrl+Shift+F12
 fun main(args: Array<String>) {
-    println("Hello World!")
+    if (args.isEmpty()) {
+        println("No args!!!")
+    } else {
+        for (arg in args) {
+            println(arg)
+        }
+    }
 }
