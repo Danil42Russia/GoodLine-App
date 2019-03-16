@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+rm -rf out
+mkdir out
+
 echo Begin Build
-kotlinc -d out/jar.jar -include-runtime src
+kotlinc -d out/aaa.jar -include-runtime src
 echo End Build
