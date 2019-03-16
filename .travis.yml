@@ -1,0 +1,10 @@
+install: true
+jdk:
+  - openjdk11
+script:
+  - curl -s get.sdkman.io | bash
+  - source "$HOME/.sdkman/bin/sdkman-init.sh"
+  - echo sdkman_auto_answer=true > ~/.sdkman/etc/config
+  - source "/home/travis/.sdkman/bin/sdkman-init.sh"
+  - sdk install kotlin
+  - ./TEST.sh
