@@ -9,17 +9,16 @@ package ru.danil42russia.aaa
  */
 
 fun main(args: Array<String>) {
-    val status: Int
-    when {
+    val status= when {
         args.isEmpty() -> {
             println("No args!!!")
-            status = 0
+            0
         }
-        args.size == 1 -> status = 1
-        args.size == 2 -> status = 2
+        args.size == 1 -> 1
+        args.size == 2 -> 2
         else -> {
             args.forEach { println(it) }
-            status = 100
+            100
         }
     }
 
