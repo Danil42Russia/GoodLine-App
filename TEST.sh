@@ -23,11 +23,6 @@ function test {
     fi
 }
 
-test "NO args" 0
-test "1 args" 1 foo
-test "2 args" 2 foo baz
-test "Many args" 100 foo bar baz "1 2 3"
-
 echo
 if [ $COUNT_ALL -eq $COUNT_SUC ]; then
     echo All $COUNT_SUC test passed
