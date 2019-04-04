@@ -23,6 +23,24 @@ function test {
     fi
 }
 
+test "T0-1" 0 -login user@xyz.com -pass qwerty12345
+test "T0-2" 0 -pass 123456qwerty -login user@mk.ru
+
+test "T1-1" 1
+test "T1-2" 1 -login user@xyz.com -pass qwerty12345 -params
+test "T1-3" 1 -login user@xyz.com
+test "T1-4" 1 -pass qwerty12345
+test "T1-5" 1 -h
+
+test "T2-1" 2 -login user -pass 1234
+test "T2-2" 2 -login user@u -pass 1234
+
+test "T3-1" 3 -login useD@xyz.zom -pass 1234
+test "T3-2" 3 -login e@e.ru -pass 1234
+
+test "T3-1" 4 -login user@xyz.com -pass 1234
+test "T3-2" 4 -login user@mk.com -pass 1234
+
 echo
 if [ $COUNT_ALL -eq $COUNT_SUC ]; then
     echo All $COUNT_SUC test passed
