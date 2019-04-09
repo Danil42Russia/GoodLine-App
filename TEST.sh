@@ -39,7 +39,7 @@ test "T3-1" 3 -login useD@xyz.zom -pass 1234
 test "T3-2" 3 -login e@e.ru -pass 1234
 
 test "T4-1" 4 -login user@xyz.com -pass 1234
-test "T4-2" 4 -login user@mk.com -pass 1234
+test "T4-2" 4 -login user@mk.ru -pass 1234
 
 echo
 if [ $COUNT_ALL -eq $COUNT_SUC ]; then
