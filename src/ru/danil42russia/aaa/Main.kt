@@ -4,7 +4,10 @@ import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     val cmdService = CmdService()
+    val userService = UserServise()
+
     var exitCodes = ExitCodes.SUCCESS
+    var isEditCode = false
 
     val users = ArrayList<User>()
     users.add(
@@ -26,7 +29,10 @@ fun main(args: Array<String>) {
     if (cmd.help) {
         cmdService.help()
         exitCodes = ExitCodes.HELP
+        isEditCode = true
     }
+    if (!userService.checkLogin(cmd.login) && !isEditCode)
+        exitCodes = ExitCodes.BADLOGINFORMAT
 
     exitProcess(exitCodes.ordinal)
 }
