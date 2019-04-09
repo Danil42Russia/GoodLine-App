@@ -33,4 +33,8 @@ class CmdService {
 
         return Cmd(login, password, help)
     }
+
+    fun help() {
+        println("using: aaa [-login] <login> [-pass] <password> [-h]")
+    }
 }
