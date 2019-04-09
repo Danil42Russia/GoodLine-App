@@ -1,6 +1,9 @@
 package ru.danil42russia.aaa
 
 import kotlin.system.exitProcess
+import java.security.MessageDigest
+import java.math.BigInteger
+
 
 fun main(args: Array<String>) {
     val cmdService = CmdService()

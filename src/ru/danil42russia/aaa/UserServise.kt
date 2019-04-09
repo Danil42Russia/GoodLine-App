@@ -1,5 +1,7 @@
 package ru.danil42russia.aaa
 
+import java.math.BigInteger
+import java.security.MessageDigest
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -16,5 +18,21 @@ class UserServise {
 
     fun findUserByLogin(login: String, user: ArrayList<User>): User? {
         return user.find { it.login == login }
+    }
+
+    fun encrypt(pass: String, salt: String): String {
+        return SHA256(SHA256(pass) + salt)
+    }
+
+    private fun SHA256(text: String): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        val messageDigest = md.digest(text.toByteArray())
+        val no = BigInteger(1, messageDigest)
+        var hashtext = no.toString(16)
+        while (hashtext.length < 32) {
+            hashtext = "0$hashtext"
+        }
+
+        return hashtext
     }
 }
