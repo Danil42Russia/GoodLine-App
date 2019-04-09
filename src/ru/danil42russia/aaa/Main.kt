@@ -4,15 +4,10 @@ import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     val cmdService = CmdService()
-    val userService = UserService()
+    val businessLogic = BusinessLogic()
 
     var exitCodes = ExitCodes.SUCCESS
     var isEditCode = false
-
-    val user: User?
-    val login: String
-    val password: String
-    val hashPassword: String
 
     val users = ArrayList<User>()
     users.add(
@@ -31,29 +26,15 @@ fun main(args: Array<String>) {
     )
 
     val cmd = cmdService.parse(args)
-    login = cmd.login
-    password = cmd.pass
 
     if (cmd.help) {
         cmdService.help()
         exitCodes = ExitCodes.HELP
         isEditCode = true
     }
-    if (!userService.checkLogin(login) && !isEditCode) {
-        exitCodes = ExitCodes.BADLOGINFORMAT
-        isEditCode = true
-    }
 
-    user = userService.findUserByLogin(login, users)
-    if (user != null) {
-        hashPassword = userService.encrypt(password, user.salt)
-
-        if (!userService.validatePass(user, hashPassword) && !isEditCode) {
-            exitCodes = ExitCodes.BADPASSWORD
-        }
-    } else {
-        if (!isEditCode)
-            exitCodes = ExitCodes.BADLOGIN
+    if (!isEditCode) {
+        exitCodes = businessLogic.authentication(cmd, users)
     }
 
     exitProcess(exitCodes.ordinal)
