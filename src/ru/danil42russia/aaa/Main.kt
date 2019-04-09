@@ -52,7 +52,8 @@ fun main(args: Array<String>) {
             exitCodes = ExitCodes.BADPASSWORD
         }
     } else {
-        exitCodes = ExitCodes.BADLOGIN
+        if (!isEditCode)
+            exitCodes = ExitCodes.BADLOGIN
     }
 
     exitProcess(exitCodes.ordinal)
