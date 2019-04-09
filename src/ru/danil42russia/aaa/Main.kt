@@ -9,6 +9,8 @@ fun main(args: Array<String>) {
     var exitCodes = ExitCodes.SUCCESS
     var isEditCode = false
 
+    val user: User?
+
     val users = ArrayList<User>()
     users.add(
         User(
@@ -31,8 +33,16 @@ fun main(args: Array<String>) {
         exitCodes = ExitCodes.HELP
         isEditCode = true
     }
-    if (!userService.checkLogin(cmd.login) && !isEditCode)
+    if (!userService.checkLogin(cmd.login) && !isEditCode) {
         exitCodes = ExitCodes.BADLOGINFORMAT
+        isEditCode = true
+    }
+
+    user = userService.findUserByLogin(cmd.login, users)
+    if (user == null && !isEditCode) {
+        exitCodes = ExitCodes.BADLOGIN
+        isEditCode = true
+    }
 
     exitProcess(exitCodes.ordinal)
 }

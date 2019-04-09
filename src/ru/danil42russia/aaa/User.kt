@@ -1,3 +1,3 @@
 package ru.danil42russia.aaa
 
-class User(login: String, pass: String, salt: String)
+data class User(val login: String, val pass: String, val salt: String)

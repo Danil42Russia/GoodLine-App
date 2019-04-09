@@ -24,7 +24,7 @@ class CmdService {
 
         i = 0
         while (i < args.size) {
-            if (help || (args[i] != "-login" && args[i] != "-pass" && args[i] != login && args[i] != password)) {
+            if ((args[i] != "-login" && args[i] != "-pass" && args[i] != login && args[i] != password)) {
                 help = true
                 break
             }
