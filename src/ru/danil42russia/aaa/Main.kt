@@ -1,18 +1,18 @@
 package ru.danil42russia.aaa
 
 import kotlin.system.exitProcess
-import java.security.MessageDigest
-import java.math.BigInteger
-
 
 fun main(args: Array<String>) {
     val cmdService = CmdService()
-    val userService = UserServise()
+    val userService = UserService()
 
     var exitCodes = ExitCodes.SUCCESS
     var isEditCode = false
 
     val user: User?
+    val login: String
+    val password: String
+    val hashPassword: String
 
     val users = ArrayList<User>()
     users.add(
@@ -31,20 +31,28 @@ fun main(args: Array<String>) {
     )
 
     val cmd = cmdService.parse(args)
+    login = cmd.login
+    password = cmd.pass
+
     if (cmd.help) {
         cmdService.help()
         exitCodes = ExitCodes.HELP
         isEditCode = true
     }
-    if (!userService.checkLogin(cmd.login) && !isEditCode) {
+    if (!userService.checkLogin(login) && !isEditCode) {
         exitCodes = ExitCodes.BADLOGINFORMAT
         isEditCode = true
     }
 
-    user = userService.findUserByLogin(cmd.login, users)
-    if (user == null && !isEditCode) {
+    user = userService.findUserByLogin(login, users)
+    if (user != null) {
+        hashPassword = userService.encrypt(password, user.salt)
+
+        if (!userService.validatePass(user, hashPassword) && !isEditCode) {
+            exitCodes = ExitCodes.BADPASSWORD
+        }
+    } else {
         exitCodes = ExitCodes.BADLOGIN
-        isEditCode = true
     }
 
     exitProcess(exitCodes.ordinal)
