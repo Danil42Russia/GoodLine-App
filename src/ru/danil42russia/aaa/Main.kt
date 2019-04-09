@@ -1,6 +1,8 @@
 package ru.danil42russia.aaa
 
 fun main(args: Array<String>) {
+    val cmdService: CmdService = CmdService()
+
     val users = ArrayList<User>()
     users.add(
             User(
@@ -16,4 +18,6 @@ fun main(args: Array<String>) {
                     "807d16ef77c55e79fa210d50006093343a709304c8762a4f5c22e03364301369"
             )
     )
+
+    val cmd = cmdService.parse(args)
 }

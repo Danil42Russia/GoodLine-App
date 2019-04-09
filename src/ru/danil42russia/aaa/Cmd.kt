@@ -1,3 +1,3 @@
 package ru.danil42russia.aaa
 
-class Cmd(login: String, pass: String, help: Boolean)
+data class Cmd(val login: String, val pass: String, val help: Boolean = false)
