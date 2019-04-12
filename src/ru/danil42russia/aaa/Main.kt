@@ -34,5 +34,5 @@ fun main(args: Array<String>) {
         exitCodes = businessLogic.authentication(cmd.login, cmd.pass, users)
     }
 
-    exitProcess(exitCodes.ordinal)
+    exitProcess(exitCodes.code)
 }
