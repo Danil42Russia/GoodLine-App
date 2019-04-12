@@ -1,4 +1,4 @@
-package ru.danil42russia.aaa
+package ru.danil42russia.aaa.Domain
 
 enum class ExitCodes(val code: Int) {
     SUCCESS(0),

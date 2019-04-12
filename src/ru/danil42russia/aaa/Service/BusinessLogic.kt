@@ -1,4 +1,7 @@
-package ru.danil42russia.aaa
+package ru.danil42russia.aaa.Service
+
+import ru.danil42russia.aaa.Domain.ExitCodes
+import ru.danil42russia.aaa.Domain.User
 
 class BusinessLogic {
     fun authentication(login: String, pass: String, users: List<User>): ExitCodes {
