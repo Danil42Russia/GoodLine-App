@@ -15,7 +15,7 @@ class UserService {
         return matcher.find()
     }
 
-    fun findUserByLogin(login: String, user: ArrayList<User>): User? {
+    fun findUserByLogin(login: String, user: List<User>): User? {
         return user.find { it.login == login }
     }
 

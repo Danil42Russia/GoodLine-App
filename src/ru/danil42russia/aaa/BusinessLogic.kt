@@ -16,7 +16,7 @@ class BusinessLogic {
         return hashText
     }
 
-    fun authentication(cmd: Cmd, users: ArrayList<User>): ExitCodes {
+    fun authentication(cmd: Cmd, users: List<User>): ExitCodes {
         val userService = UserService()
         var isEditCode = false
         var exitCodes: ExitCodes = ExitCodes.SUCCESS
