@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
     }
 
     if (!isEditCode) {
-        exitCodes = businessLogic.authentication(cmd, users)
+        exitCodes = businessLogic.authentication(cmd.login, cmd.pass, users)
     }
 
     exitProcess(exitCodes.ordinal)

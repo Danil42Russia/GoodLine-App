@@ -16,13 +16,10 @@ class BusinessLogic {
         return hashText
     }
 
-    fun authentication(cmd: Cmd, users: List<User>): ExitCodes {
+    fun authentication(login: String, pass: String, users: List<User>): ExitCodes {
         val userService = UserService()
         var isEditCode = false
         var exitCodes: ExitCodes = ExitCodes.SUCCESS
-
-        val login: String = cmd.login
-        val password: String = cmd.pass
 
         if (!userService.checkLogin(login) && !isEditCode) {
             exitCodes = ExitCodes.BADLOGINFORMAT
@@ -31,7 +28,7 @@ class BusinessLogic {
 
         val user = userService.findUserByLogin(login, users)
         if (user != null) {
-            val hashPassword = userService.encrypt(password, user.salt)
+            val hashPassword = userService.encrypt(pass, user.salt)
 
             if (!userService.validatePass(user, hashPassword) && !isEditCode) {
                 exitCodes = ExitCodes.BADPASSWORD
