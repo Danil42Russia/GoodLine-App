@@ -20,10 +20,10 @@ class UserService {
     }
 
     fun encrypt(pass: String, salt: String): String {
-        return businessLogic.SHA256(businessLogic.SHA256(pass) + salt)
+        return SHA256(SHA256(pass) + salt)
     }
 
-    fun validatePass(user: User, pass: String): Boolean{
-        return  user.pass == pass
+    fun validatePass(user: User, pass: String): Boolean {
+        return user.pass == pass
     }
 }
