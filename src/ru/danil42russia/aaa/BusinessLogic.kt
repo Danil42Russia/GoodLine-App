@@ -21,19 +21,17 @@ class BusinessLogic {
         var isEditCode = false
         var exitCodes: ExitCodes = ExitCodes.SUCCESS
 
-        val user: User?
         val login: String = cmd.login
         val password: String = cmd.pass
-        val hashPassword: String
 
         if (!userService.checkLogin(login) && !isEditCode) {
             exitCodes = ExitCodes.BADLOGINFORMAT
             isEditCode = true
         }
 
-        user = userService.findUserByLogin(login, users)
+        val user = userService.findUserByLogin(login, users)
         if (user != null) {
-            hashPassword = userService.encrypt(password, user.salt)
+            val hashPassword = userService.encrypt(password, user.salt)
 
             if (!userService.validatePass(user, hashPassword) && !isEditCode) {
                 exitCodes = ExitCodes.BADPASSWORD
