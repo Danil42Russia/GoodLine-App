@@ -6,4 +6,7 @@ enum class ExitCodes(val code: Int) {
     BADLOGINFORMAT(2),
     BADLOGIN(3),
     BADPASSWORD(4),
+    BADROLE(5),
+    NOTPERMISSION(6),
+    INCORRECTACTIVITY(7),
 }
