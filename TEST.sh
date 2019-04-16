@@ -25,6 +25,9 @@ function test {
 
 test "T0-1" 0 -login user@xyz.com -pass qwerty12345
 test "T0-2" 0 -pass 123456qwerty -login user@mk.ru
+test "T0-3" 0 -login user@xyz.com -pass qwerty12345 -res A.B -role READ
+test "T0-4" 0 -pass 123456qwerty -login user@mk.ru -res A.B.C -role READ
+test "T0-5" 0 -vol 100 -login user@xyz.com -res A.B.C.D.E -role READ -de 01.02.2019 -ds 01.01.2019 -pass qwerty12345
 
 test "T1-1" 1
 test "T1-2" 1 -login user@xyz.com -pass qwerty12345 -params
@@ -40,6 +43,15 @@ test "T3-2" 3 -login e@e.ru -pass 1234
 
 test "T4-1" 4 -login user@xyz.com -pass 1234
 test "T4-2" 4 -login user@mk.ru -pass 1234
+
+test "T5-1" 5 -login user@xyz.com -pass qwerty12345 -res A.B.C -role READE
+test "T5-2" 5 -login user@mk.ru -pass 123456qwerty -res A.B.C -role write
+
+test "T6-1" 6 -login user@xyz.com -pass qwerty12345 -res A. -role READ
+test "T6-2" 6 -login user@mk.ru -pass 123456qwerty -res A.!B -role WRITE
+
+test "T7-1" 7 -login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 01.02.2019 -de 01.01.2019 -vol 100
+test "T7-2" 7 -login user@mk.ru -pass 123456qwerty -res A.B.C -role WRITE -ds 01.01.2019 -de 01.02.2019 -vol -100
 
 echo
 if [ $COUNT_ALL -eq $COUNT_SUC ]; then
