@@ -1,39 +1,19 @@
 package ru.danil42russia.aaa.service
 
+import org.apache.commons.cli.*
 import ru.danil42russia.aaa.domain.Cmd
 
 class CmdService {
     fun parse(args: Array<String>): Cmd {
-        var login = ""
-        var password = ""
-        var help = false
-        var i = 0
+        val clp: CommandLineParser = DefaultParser()
+        val options = Options()
+        options.addOption(Option("login", true, "Login"))
+        options.addOption(Option("pass", true, "Pass"))
+        options.addOption(Option("h", false, "Help"))
 
-        while (i < args.size) {
-            if (args[i] == "-login") {
-                i++
-                login = args[i]
-            }
-            if (args[i] == "-pass") {
-                i++
-                password = args[i]
-            }
-            i++
-        }
+        val cl: CommandLine = clp.parse(options, args)
 
-        if (password.isEmpty() || login.isEmpty())
-            help = true
-
-        i = 0
-        while (i < args.size) {
-            if (args[i] != "-login" && args[i] != "-pass" && args[i] != login && args[i] != password) {
-                help = true
-                break
-            }
-            i++
-        }
-
-        return Cmd(login, password, help)
+        return Cmd(cl.getOptionValue("login"), cl.getOptionValue("pass"), cl.hasOption("h"))
     }
 
     fun help() {
