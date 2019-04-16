@@ -1,4 +1,4 @@
-package ru.danil42russia.aaa.Domain
+package ru.danil42russia.aaa.domain
 
 enum class Roles {
     READ,

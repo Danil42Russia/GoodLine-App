@@ -1,9 +1,9 @@
 package ru.danil42russia.aaa
 
-import ru.danil42russia.aaa.Domain.ExitCodes
-import ru.danil42russia.aaa.Domain.User
-import ru.danil42russia.aaa.Service.BusinessLogic
-import ru.danil42russia.aaa.Service.CmdService
+import ru.danil42russia.aaa.domain.ExitCodes
+import ru.danil42russia.aaa.domain.User
+import ru.danil42russia.aaa.service.BusinessLogic
+import ru.danil42russia.aaa.service.CmdService
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {

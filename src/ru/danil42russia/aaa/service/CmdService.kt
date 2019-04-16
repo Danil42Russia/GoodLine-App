@@ -1,6 +1,6 @@
-package ru.danil42russia.aaa.Service
+package ru.danil42russia.aaa.service
 
-import ru.danil42russia.aaa.Domain.Cmd
+import ru.danil42russia.aaa.domain.Cmd
 
 class CmdService {
     fun parse(args: Array<String>): Cmd {
