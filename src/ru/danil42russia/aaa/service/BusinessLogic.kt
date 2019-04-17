@@ -32,4 +32,8 @@ class BusinessLogic {
     fun authorization(login: String, pass: String, users: List<User>): ExitCodes {
 
     }
+
+    fun accounting(login: String, pass: String, role: String, users: List<User>): ExitCodes {
+
+    }
 }
