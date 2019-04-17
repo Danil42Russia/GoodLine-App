@@ -31,6 +31,7 @@ class CmdService {
     }
 
     fun help() {
-        println("using: aaa [-login] <login> [-pass] <password> [-h]")
+        val formatter = HelpFormatter()
+        formatter.printHelp("aaa", options, true)
     }
 }
