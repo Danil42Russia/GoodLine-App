@@ -47,11 +47,11 @@ test "T4-2" 4 -login user@mk.ru -pass 1234
 test "T5-1" 5 -login user@xyz.com -pass qwerty12345 -res A.B.C -role READE
 test "T5-2" 5 -login user@mk.ru -pass 123456qwerty -res A.B.C -role write
 
-test "T6-1" 6 -login user@xyz.com -pass qwerty12345 -res A. -role READ
-test "T6-2" 6 -login user@mk.ru -pass 123456qwerty -res A.!B -role WRITE
-
-test "T7-1" 7 -login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 01.02.2019 -de 01.01.2019 -vol 100
-test "T7-2" 7 -login user@mk.ru -pass 123456qwerty -res A.B.C -role WRITE -ds 01.01.2019 -de 01.02.2019 -vol -100
+#test "T6-1" 6 -login user@xyz.com -pass qwerty12345 -res A. -role READ
+#test "T6-2" 6 -login user@mk.ru -pass 123456qwerty -res A.!B -role WRITE
+#
+#test "T7-1" 7 -login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 01.02.2019 -de 01.01.2019 -vol 100
+#test "T7-2" 7 -login user@mk.ru -pass 123456qwerty -res A.B.C -role WRITE -ds 01.01.2019 -de 01.02.2019 -vol -100
 
 echo
 if [ $COUNT_ALL -eq $COUNT_SUC ]; then
