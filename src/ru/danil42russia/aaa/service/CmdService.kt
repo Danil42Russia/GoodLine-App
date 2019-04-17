@@ -4,16 +4,30 @@ import org.apache.commons.cli.*
 import ru.danil42russia.aaa.domain.Cmd
 
 class CmdService {
+    private val options = Options()
     fun parse(args: Array<String>): Cmd {
         val clp: CommandLineParser = DefaultParser()
-        val options = Options()
+        var help: Boolean
+
         options.addOption(Option("login", true, "Login"))
         options.addOption(Option("pass", true, "Pass"))
         options.addOption(Option("h", false, "Help"))
 
-        val cl: CommandLine = clp.parse(options, args)
+        var login = ""
+        var pass = ""
 
-        return Cmd(cl.getOptionValue("login"), cl.getOptionValue("pass"), cl.hasOption("h"))
+        val cl: CommandLine
+        try {
+            cl = clp.parse(options, args)
+
+            help = cl.hasOption("help")
+            login = cl.getOptionValue("login")
+            pass = cl.getOptionValue("pass")
+        } catch (ex: Exception) {
+            help = true
+        }
+
+        return Cmd(login, pass, help)
     }
 
     fun help() {

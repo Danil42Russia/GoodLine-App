@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     val cmdService = CmdService()
     val businessLogic = BusinessLogic()
 
-    var exitCodes = ExitCodes.SUCCESS
+    var exitCodes = ExitCodes.NOAUTH
     var isEditCode = false
 
     val users = listOf(
@@ -35,7 +35,7 @@ fun main(args: Array<String>) {
     }
 
     if (!isEditCode) {
-        exitCodes = businessLogic.authentication(cmd.login, cmd.pass, users)
+        exitCodes = businessLogic.authentication(cmd.login!!, cmd.pass!!, users)
     }
 
     exitProcess(exitCodes.code)
