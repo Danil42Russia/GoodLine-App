@@ -28,4 +28,8 @@ class BusinessLogic {
 
         return exitCodes
     }
+
+    fun authorization(login: String, pass: String, users: List<User>): ExitCodes {
+
+    }
 }
