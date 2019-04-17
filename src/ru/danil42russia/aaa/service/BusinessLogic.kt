@@ -7,7 +7,7 @@ class BusinessLogic {
     fun authentication(login: String, pass: String, users: List<User>): ExitCodes {
         val userService = UserService()
         var isEditCode = false
-        var exitCodes: ExitCodes = ExitCodes.NOAUTH
+        var exitCodes: ExitCodes = ExitCodes.SUCCESS
 
         if (!userService.checkLogin(login) && !isEditCode) {
             exitCodes = ExitCodes.BADLOGINFORMAT
@@ -25,9 +25,6 @@ class BusinessLogic {
             if (!isEditCode)
                 exitCodes = ExitCodes.BADLOGIN
         }
-
-        if (!isEditCode)
-            exitCodes = ExitCodes.SUCCESS
 
         return exitCodes
     }
