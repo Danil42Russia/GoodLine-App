@@ -13,6 +13,12 @@ class CmdService {
         options.addOption(Option("pass", true, "Pass"))
         options.addOption(Option("h", false, "Help"))
 
+        options.addOption(Option("res", false, "Level"))
+        options.addOption(Option("role", false, "Role"))
+        options.addOption(Option("ds", false, "Start date"))
+        options.addOption(Option("de", false, "End date"))
+        options.addOption(Option("vol", false, "Value"))
+
         var login = ""
         var pass = ""
 
