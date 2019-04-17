@@ -26,6 +26,9 @@ class BusinessLogic {
                 exitCodes = ExitCodes.BADLOGIN
         }
 
+        if (!isEditCode)
+            exitCodes = ExitCodes.SUCCESS
+
         return exitCodes
     }
 }
