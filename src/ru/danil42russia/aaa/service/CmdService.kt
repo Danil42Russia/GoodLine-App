@@ -49,6 +49,7 @@ class CmdService {
 
                 if (cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")) {
                     val sdf = SimpleDateFormat("yyyy.MM.dd")
+                    sdf.isLenient = false
 
                     ds = sdf.parse(cl.getOptionValue("ds")).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
                     de = sdf.parse(cl.getOptionValue("de")).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
