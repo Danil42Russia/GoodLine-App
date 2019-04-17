@@ -68,4 +68,10 @@ class CmdService {
         val formatter = HelpFormatter()
         formatter.printHelp("aaa", options, true)
     }
+
+
+}
+
+inline fun <reified T : Enum<T>> checkRole(role: String): Boolean {
+    return enumValues<T>().any { it.name == role }
 }
