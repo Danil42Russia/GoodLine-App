@@ -1,6 +1,7 @@
 package ru.danil42russia.aaa.service
 
 import ru.danil42russia.aaa.domain.ExitCodes
+import ru.danil42russia.aaa.domain.Roles
 import ru.danil42russia.aaa.domain.User
 
 class BusinessLogic {
@@ -46,9 +47,10 @@ class BusinessLogic {
     fun accounting(role: String?, cmd: CmdService): ExitCodes {
         var exitCodes: ExitCodes = ExitCodes.SUCCESS
 
-        if (role != null && !cmd.checkRole<ExitCodes>(role))
-            exitCodes = ExitCodes.BADROLE
-
+        if (role != null) {
+            if (!cmd.checkRole<Roles>(role))
+                exitCodes = ExitCodes.BADROLE
+        }
         return exitCodes
     }
 }

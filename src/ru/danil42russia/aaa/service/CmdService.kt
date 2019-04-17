@@ -29,8 +29,8 @@ class CmdService {
         var pass = ""
         var help: Boolean
 
-        var res = ""
-        var role = ""
+        var res: String? = null
+        var role: String? = null
 
         var ds: LocalDate? = null
         var de: LocalDate? = null
@@ -50,7 +50,7 @@ class CmdService {
                 role = cl.getOptionValue("role")
 
                 if (cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")) {
-                    val sdf = SimpleDateFormat("yyyy.MM.dd")
+                    val sdf = SimpleDateFormat("dd.MM.yyyy")
                     sdf.isLenient = false
 
                     ds = sdf.parse(cl.getOptionValue("ds")).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
