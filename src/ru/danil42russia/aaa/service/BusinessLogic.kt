@@ -6,8 +6,7 @@ import ru.danil42russia.aaa.domain.User
 
 class BusinessLogic {
     //0,1,2
-    fun authentication(login: String, help: Boolean, cmd: CmdService): ExitCode {
-        val userService = UserService()
+    fun authentication(login: String, help: Boolean, cmd: CmdService, userService: UserService): ExitCode {
         var isEditCode = false
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
@@ -25,8 +24,7 @@ class BusinessLogic {
     }
 
     //0,3,4
-    fun authorization(login: String, pass: String, users: List<User>): ExitCode {
-        val userService = UserService()
+    fun authorization(login: String, pass: String, userService: UserService, users: List<User>): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         val user = userService.findUserByLogin(login, users)

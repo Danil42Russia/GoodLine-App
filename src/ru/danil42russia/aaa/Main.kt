@@ -4,11 +4,13 @@ import ru.danil42russia.aaa.domain.ExitCode
 import ru.danil42russia.aaa.domain.User
 import ru.danil42russia.aaa.service.BusinessLogic
 import ru.danil42russia.aaa.service.CmdService
+import ru.danil42russia.aaa.service.UserService
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     val cmdService = CmdService()
     val businessLogic = BusinessLogic()
+    val userService = UserService()
 
     val users = listOf(
         User(
@@ -25,10 +27,10 @@ fun main(args: Array<String>) {
 
     val cmd = cmdService.parse(args)
 
-    var exitCodes = businessLogic.authentication(cmd.login, cmd.help, cmdService)
+    var exitCodes = businessLogic.authentication(cmd.login, cmd.help, cmdService, userService)
 
     if (exitCodes == ExitCode.SUCCESS) {
-        exitCodes = businessLogic.authorization(cmd.login, cmd.pass, users)
+        exitCodes = businessLogic.authorization(cmd.login, cmd.pass, userService, users)
     }
 
     if (exitCodes == ExitCode.SUCCESS) {
