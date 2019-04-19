@@ -10,8 +10,6 @@ fun main(args: Array<String>) {
     val cmdService = CmdService()
     val businessLogic = BusinessLogic()
 
-    var exitCodes: ExitCode
-
     val users = listOf(
         User(
             "user@xyz.com",
@@ -27,7 +25,7 @@ fun main(args: Array<String>) {
 
     val cmd = cmdService.parse(args)
 
-    exitCodes = businessLogic.authentication(cmd.login, cmd.help, cmdService)
+    var exitCodes = businessLogic.authentication(cmd.login, cmd.help, cmdService)
 
     if (exitCodes == ExitCode.SUCCESS) {
         exitCodes = businessLogic.authorization(cmd.login, cmd.pass, users)
