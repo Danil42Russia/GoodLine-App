@@ -65,8 +65,7 @@ class CmdService {
     }
 
     fun help() {
-        val formatter = HelpFormatter()
-        formatter.printHelp("aaa", options, true)
+        HelpFormatter().printHelp("aaa", options, true)
     }
 
     inline fun <reified T : Enum<T>> checkRole(role: String): Boolean {
