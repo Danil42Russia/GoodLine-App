@@ -2,9 +2,8 @@ package ru.danil42russia.aaa.service
 
 import org.apache.commons.cli.*
 import ru.danil42russia.aaa.domain.Cmd
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -50,11 +49,10 @@ class CmdService {
                 role = cl.getOptionValue("role")
 
                 if (cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")) {
-                    val sdf = SimpleDateFormat("dd.MM.yyyy")
-                    sdf.isLenient = false
+                    val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
 
-                    ds = sdf.parse(cl.getOptionValue("ds")).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-                    de = sdf.parse(cl.getOptionValue("de")).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                    ds = LocalDate.parse(cl.getOptionValue("ds"), formatter)
+                    de = LocalDate.parse(cl.getOptionValue("de"), formatter)
                     vol = cl.getOptionValue("vol").toInt()
                 }
             }
