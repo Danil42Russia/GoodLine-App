@@ -1,6 +1,6 @@
 package ru.danil42russia.aaa.domain
 
-enum class ExitCodes(val code: Int) {
+enum class ExitCode(val code: Int) {
     NOAUTH(-1),
     SUCCESS(0),
     HELP(1),

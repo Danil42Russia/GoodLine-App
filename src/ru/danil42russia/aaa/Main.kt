@@ -1,6 +1,6 @@
 package ru.danil42russia.aaa
 
-import ru.danil42russia.aaa.domain.ExitCodes
+import ru.danil42russia.aaa.domain.ExitCode
 import ru.danil42russia.aaa.domain.User
 import ru.danil42russia.aaa.service.BusinessLogic
 import ru.danil42russia.aaa.service.CmdService
@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     val cmdService = CmdService()
     val businessLogic = BusinessLogic()
 
-    var exitCodes: ExitCodes
+    var exitCodes: ExitCode
 
     val users = listOf(
         User(
@@ -29,11 +29,11 @@ fun main(args: Array<String>) {
 
     exitCodes = businessLogic.authentication(cmd.login, cmd.help, cmdService)
 
-    if (exitCodes == ExitCodes.SUCCESS) {
+    if (exitCodes == ExitCode.SUCCESS) {
         exitCodes = businessLogic.authorization(cmd.login, cmd.pass, users)
     }
 
-    if (exitCodes == ExitCodes.SUCCESS) {
+    if (exitCodes == ExitCode.SUCCESS) {
         exitCodes = businessLogic.accounting(cmd.role, cmdService)
     }
 
