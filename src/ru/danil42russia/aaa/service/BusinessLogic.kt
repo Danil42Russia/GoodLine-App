@@ -18,7 +18,7 @@ class BusinessLogic {
         }
 
         if (!userService.checkLogin(login) && !isEditCode) {
-            exitCodes = ExitCode.BADLOGINFORMAT
+            exitCodes = ExitCode.BAD_LOGIN_FORMAT
         }
 
         return exitCodes
@@ -34,10 +34,10 @@ class BusinessLogic {
             val hashPassword = userService.encrypt(pass, user.salt)
 
             if (!userService.validatePass(user, hashPassword)) {
-                exitCodes = ExitCode.BADPASSWORD
+                exitCodes = ExitCode.BAD_PASSWORD
             }
         } else {
-            exitCodes = ExitCode.BADLOGIN
+            exitCodes = ExitCode.BAD_LOGIN
         }
 
         return exitCodes
@@ -49,7 +49,7 @@ class BusinessLogic {
 
         if (role != null) {
             if (!cmd.checkRole<Roles>(role))
-                exitCodes = ExitCode.BADROLE
+                exitCodes = ExitCode.BAD_ROLE
         }
         return exitCodes
     }
