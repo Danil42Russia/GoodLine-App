@@ -1,5 +1,6 @@
 install: true
 jdk:
+  - openjdk11
   - openjdk12
 script:
   - curl -s get.sdkman.io | bash
