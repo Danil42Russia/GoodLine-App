@@ -10,9 +10,7 @@ import java.util.regex.Pattern
 class CmdService {
     private val options = Options()
 
-    fun parse(args: Array<String>): Cmd {
-        val clp: CommandLineParser = DefaultParser()
-
+    init {
         options.addOption(Option("login", true, "Login"))
         options.addOption(Option("pass", true, "Pass"))
         options.addOption(Option("h", false, "Help"))
@@ -23,6 +21,10 @@ class CmdService {
         options.addOption(Option("ds", true, "Start date"))
         options.addOption(Option("de", true, "End date"))
         options.addOption(Option("vol", true, "Value"))
+    }
+
+    fun parse(args: Array<String>): Cmd {
+        val clp: CommandLineParser = DefaultParser()
 
         var login = ""
         var pass = ""
