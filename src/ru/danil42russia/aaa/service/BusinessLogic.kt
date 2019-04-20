@@ -11,17 +11,17 @@ class BusinessLogic {
      *
      * @param login login entered
      * @param help
-     * @param cmd
+     * @param cmdService
      * @param userService
      *
      * @return SUCCESS if everything is us, HELP if a wrong argument or need to get help, BAD_LOGIN_FORMAT if login format is incorrect
      */
-    fun authentication(login: String, help: Boolean, cmd: CmdService, userService: UserService): ExitCode {
+    fun authentication(login: String, help: Boolean, cmdService: CmdService, userService: UserService): ExitCode {
         var isEditCode = false
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         if (help) {
-            cmd.help()
+            cmdService.help()
             exitCodes = ExitCode.HELP
             isEditCode = true
         }
@@ -64,15 +64,15 @@ class BusinessLogic {
      * Accounts user
      *
      * @param role role entered
-     * @param cmd
+     * @param cmdService
      *
      * @return SUCCESS if everything is us, BAD_ROLE if not the right role
      */
-    fun accounting(role: String?, cmd: CmdService): ExitCode {
+    fun accounting(role: String?, cmdService: CmdService): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         if (role != null) {
-            if (!cmd.checkRole<Roles>(role))
+            if (!cmdService.checkRole<Roles>(role))
                 exitCodes = ExitCode.BAD_ROLE
         }
         return exitCodes
