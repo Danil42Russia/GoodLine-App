@@ -1,7 +1,7 @@
 package ru.danil42russia.aaa.service
 
-import ru.danil42russia.aaa.domain.User
 import ru.danil42russia.aaa.SHA256
+import ru.danil42russia.aaa.domain.User
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -11,19 +11,50 @@ class UserService {
         Pattern.CASE_INSENSITIVE
     )
 
+    /**
+     * Checks login for validity
+     *
+     * @param login
+     *
+     * @return true if the login is valid
+     */
     fun checkLogin(login: String): Boolean {
         val matcher: Matcher = emailRegex.matcher(login)
         return matcher.find()
     }
 
+    /**
+     * Looking for a user by login
+     *
+     * @param login login entered
+     * @param user list of users
+     *
+     * @return User
+     */
     fun findUserByLogin(login: String, user: List<User>): User? {
         return user.find { it.login == login }
     }
 
+    /**
+     * Hashes password using SHA-256 algorithm
+     *
+     * @param pass password entered
+     * @param salt salt
+     *
+     * @return hashed password
+     */
     fun encrypt(pass: String, salt: String): String {
         return SHA256(SHA256(pass) + salt)
     }
 
+    /**
+     * Compare password
+     *
+     * @param user user instance
+     * @param pass hashed password
+     *
+     * @return true if the password matched
+     */
     fun validatePass(user: User, pass: String): Boolean {
         return user.pass == pass
     }
