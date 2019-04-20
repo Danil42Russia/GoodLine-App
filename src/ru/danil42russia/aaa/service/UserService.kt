@@ -27,12 +27,12 @@ class UserService {
      * Looking for a user by login
      *
      * @param login login entered
-     * @param user list of users
+     * @param users list of users
      *
      * @return User
      */
-    fun findUserByLogin(login: String, user: List<User>): User? {
-        return user.find { it.login == login }
+    fun findUserByLogin(login: String, users: List<User>): User? {
+        return users.find { it.login == login }
     }
 
     /**
