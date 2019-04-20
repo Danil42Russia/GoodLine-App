@@ -17,7 +17,7 @@ class BusinessLogic {
      * @return SUCCESS if everything is us, HELP if a wrong argument or need to get help, BAD_LOGIN_FORMAT if login format is incorrect
      */
     fun authentication(login: String, help: Boolean, cmdService: CmdService, userService: UserService): ExitCode {
-        var isEditCode = false
+        var isEditCode = false //Используется для предотвращение изменения exitCodes
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         if (help) {
