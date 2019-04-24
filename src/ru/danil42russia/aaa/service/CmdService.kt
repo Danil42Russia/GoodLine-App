@@ -4,8 +4,6 @@ import org.apache.commons.cli.*
 import ru.danil42russia.aaa.domain.Cmd
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 class CmdService {
     private val options = Options()
@@ -82,15 +80,5 @@ class CmdService {
 
     inline fun <reified T : Enum<T>> checkRole(role: String): Boolean {
         return enumValues<T>().any { it.name == role }
-    }
-
-    fun checkNode(res: String): Boolean {
-        val nodeRegex = Pattern.compile(
-            "[a-zA-Z]{1,10}",
-            Pattern.CASE_INSENSITIVE
-        )
-
-        val matcher: Matcher = nodeRegex.matcher(res)
-        return matcher.find()
     }
 }
