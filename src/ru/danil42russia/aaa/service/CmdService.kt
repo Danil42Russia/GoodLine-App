@@ -46,17 +46,15 @@ class CmdService {
             login = cl.getOptionValue("login")
             pass = cl.getOptionValue("pass")
 
-            if (cl.hasOption("res") && cl.hasOption("role")) {
+            if (isAuthorization(cl)) {
                 res = cl.getOptionValue("res")
                 role = cl.getOptionValue("role")
+            }
 
-                if (cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")) {
-                    val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-
-                    ds = LocalDate.parse(cl.getOptionValue("ds"), formatter)
-                    de = LocalDate.parse(cl.getOptionValue("de"), formatter)
-                    vol = cl.getOptionValue("vol").toInt()
-                }
+            if (isAccounting(cl)) {
+                ds = parseData(cl.getOptionValue("ds"))
+                de = parseData(cl.getOptionValue("de"))
+                vol = cl.getOptionValue("vol").toInt()
             }
 
         } catch (ex: Exception) {
@@ -68,6 +66,18 @@ class CmdService {
 
     fun help() {
         HelpFormatter().printHelp("aaa", options, true)
+    }
+
+    private fun isAuthorization(cl: CommandLine) =
+        cl.hasOption("res") && cl.hasOption("role")
+
+    private fun isAccounting(cl: CommandLine) =
+        isAuthorization(cl) && cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")
+
+    private fun parseData(text: String): LocalDate {
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+
+        return LocalDate.parse(text, formatter)
     }
 
     inline fun <reified T : Enum<T>> checkRole(role: String): Boolean {
