@@ -6,8 +6,6 @@ import java.security.MessageDigest
 /**
  * Hashes a string using SHA-256
  *
- *
- *
  * @param text
  *
  * @return hashed string
