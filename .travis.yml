@@ -3,10 +3,6 @@ dist: xenial
 jdk:
   - openjdk11
 
-cache:
-  directories:
-    - $HOME/.sdkman
-
 install: true
 
 script:
