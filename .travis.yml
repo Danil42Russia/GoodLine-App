@@ -1,7 +1,11 @@
-install: true
+dist: xenial
+
 jdk:
   - openjdk11
   - openjdk12
+
+install: true
+
 script:
   - curl -s get.sdkman.io | bash
   - source "$HOME/.sdkman/bin/sdkman-init.sh"
