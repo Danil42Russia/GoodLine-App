@@ -1,6 +1,15 @@
+### Github Pages 
+
+В репозитории включен Github Pages, который генерирует из README.md статический сайт: [ссылка](https://danil42russia.github.io/GoodLine-App/)
+
+
+## 
+
+### Travis-Ci
+
 Протестировано через **Travis-Ci** [![Build Status](https://travis-ci.com/Danil42Russia/GoodLine-App.svg?branch=master)](https://travis-ci.com/Danil42Russia/GoodLine-App)
 
-##
+## 
 
 ### План работ:
 
@@ -8,7 +17,7 @@
 
 [План работ №2](https://github.com/Danil42Russia/GoodLine-App/blob/master/Roadmap2.md)
 
-##
+## 
 
 ### Инструкция по сборке
 За сборку приложения отвечает файл **BUILD.sh**
