@@ -48,7 +48,7 @@
     
     + 7.3 Создать функцию: fun help(): Unit <> Для вывода справки **[5 минут]**
 
-8. Создать класс UserServise [1 минута] **[30 минут]**
+8. Создать класс UserServise ***[1 минута]*** **[30 минут]**
     + 8.1 Создать функцию: fun checkLogin(login: String): Boolean <> Для проверки логина регулярным выражением **[20 минут]**
     + 8.2 Создать функцию: fun findUserByLogin(login: String, user: List<User>): User? <> поиск пользователя **[2 минуты]**
     + 8.3 Создать функцию: fun encrypt(pass: String, salt: String): String <> который будет генерировать хэш-пароль [ hash(hash(pass)+salt) ], где
@@ -98,7 +98,7 @@
 	+ 8.1 Создать функцию fun checkRole(role: String, roles: Roles): Boolean **[2 минуты]**
 	+ 8.2 Создать функцию fun checkNode(res: String): Boolean **[2 минуты]**
 	
-9. Изменить класс BusinessLogic **[6 минут]
+9. Изменить класс BusinessLogic **[6 минут]**
 	+ 9.1 Создать функцию fun authorization(login: String, pass: String, List<User>): ExitCode **[1 минут]**
 	+ 9.2 Создать функцию fun accounting(login: String, pass: String, role: String, List<User>): ExitCode **[1 минут]**
 	+ 9.3 Прорефакторить функцию authentication в authorization и accounting **[3 минуты]**
