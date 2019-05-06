@@ -1,10 +1,12 @@
 package ru.danil42russia.aaa.service
 
+import org.apache.logging.log4j.LogManager.getLogger
 import ru.danil42russia.aaa.domain.ExitCode
 import ru.danil42russia.aaa.domain.Roles
 import ru.danil42russia.aaa.domain.User
 
 class BusinessLogic {
+    private val log = getLogger(BusinessLogic::class.java)
 
     /**
      * Authenticates user
@@ -30,12 +32,14 @@ class BusinessLogic {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         if (help) {
+            log.debug("Print help")
             cmdService.help()
             exitCodes = ExitCode.HELP
             isEditCode = true
         }
 
         if (!userService.checkLogin(login) && !isEditCode) {
+            log.debug("Incorrect login format")
             exitCodes = ExitCode.BAD_LOGIN_FORMAT
             isEditCode = true
         }
@@ -45,11 +49,14 @@ class BusinessLogic {
             val hashPassword = userService.encrypt(pass, user.salt)
 
             if (!userService.validatePass(user, hashPassword) && !isEditCode) {
+                log.debug("Wrong password")
                 exitCodes = ExitCode.BAD_PASSWORD
             }
         } else {
-            if (!isEditCode)
+            if (!isEditCode) {
+                log.debug("Wrong login")
                 exitCodes = ExitCode.BAD_LOGIN
+            }
         }
 
         return exitCodes
@@ -67,8 +74,10 @@ class BusinessLogic {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         if (role != null) {
-            if (!cmdService.checkRole<Roles>(role))
+            if (!cmdService.checkRole<Roles>(role)) {
+                log.debug("Wrong role")
                 exitCodes = ExitCode.BAD_ROLE
+            }
         }
         //TODO add NOT_PERMISSION
         return exitCodes

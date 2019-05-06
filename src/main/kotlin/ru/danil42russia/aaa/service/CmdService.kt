@@ -1,11 +1,13 @@
 package ru.danil42russia.aaa.service
 
 import org.apache.commons.cli.*
+import org.apache.logging.log4j.LogManager
 import ru.danil42russia.aaa.domain.Cmd
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class CmdService {
+    private val log = LogManager.getLogger(BusinessLogic::class.java)
     private val options = Options()
 
     init {
@@ -22,6 +24,7 @@ class CmdService {
     }
 
     fun parse(args: Array<String>): Cmd {
+        log.debug("Parse start")
         val clp: CommandLineParser = DefaultParser()
 
         var login = ""
@@ -55,7 +58,9 @@ class CmdService {
                 vol = cl.getOptionValue("vol").toInt()
             }
 
+            log.debug("Parse successful")
         } catch (ex: Exception) {
+            log.debug("Parse failed $ex")
             help = true
         }
 
@@ -63,6 +68,7 @@ class CmdService {
     }
 
     fun help() {
+        log.debug("Print help")
         HelpFormatter().printHelp("aaa", options, true)
     }
 
@@ -73,6 +79,7 @@ class CmdService {
         isAuthorization(cl) && cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")
 
     private fun parseData(text: String): LocalDate {
+        log.debug("Parse date")
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
 
         return LocalDate.parse(text, formatter)
