@@ -1,7 +1,7 @@
 package ru.danil42russia.aaa.service
 
 import ru.danil42russia.aaa.domain.User
-import ru.danil42russia.aaa.utils.SHA256
+import ru.danil42russia.aaa.utils.sha256
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -44,7 +44,7 @@ class UserService {
      * @return hashed password
      */
     fun encrypt(pass: String, salt: String): String {
-        return SHA256(SHA256(pass) + salt)
+        return sha256(sha256(pass) + salt)
     }
 
     /**

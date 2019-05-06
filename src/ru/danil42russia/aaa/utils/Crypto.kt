@@ -10,7 +10,7 @@ import java.security.MessageDigest
  *
  * @return hashed string
  */
-fun SHA256(text: String): String {
+fun sha256(text: String): String {
     //Указываем какой алгоритм использовать
     val md = MessageDigest.getInstance("SHA-256")
     //Вычисляем дайджест
