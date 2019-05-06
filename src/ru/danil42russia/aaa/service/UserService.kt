@@ -1,7 +1,7 @@
 package ru.danil42russia.aaa.service
 
-import ru.danil42russia.aaa.SHA256
 import ru.danil42russia.aaa.domain.User
+import ru.danil42russia.aaa.utils.SHA256
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 

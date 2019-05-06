@@ -1,4 +1,4 @@
-package ru.danil42russia.aaa
+package ru.danil42russia.aaa.utils
 
 import java.math.BigInteger
 import java.security.MessageDigest
