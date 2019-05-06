@@ -27,14 +27,14 @@ fun main(args: Array<String>) {
 
     val cmd = cmdService.parse(args)
 
-    var exitCodes = businessLogic.authentication(cmd.login, cmd.help, cmdService, userService)
+    var exitCodes = businessLogic.authentication(cmd.login, cmd.pass, cmd.help, users, cmdService, userService)
 
     if (exitCodes == ExitCode.SUCCESS) {
-        exitCodes = businessLogic.authorization(cmd.login, cmd.pass, userService, users)
+        exitCodes = businessLogic.authorization(cmd.role, cmdService)
     }
 
     if (exitCodes == ExitCode.SUCCESS) {
-        exitCodes = businessLogic.accounting(cmd.role, cmdService)
+        exitCodes = businessLogic.accounting()
     }
 
     exitProcess(exitCodes.code)
