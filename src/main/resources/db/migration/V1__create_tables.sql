@@ -1,4 +1,4 @@
-CREATE TABLE user
+CREATE TABLE users
 (
     id    INTEGER PRIMARY KEY AUTOINCREMENT,
     login TEXT UNIQUE,
@@ -17,6 +17,6 @@ CREATE TABLE users_roles
     id_user INTEGER,
     id_role INTEGER,
 
-    FOREIGN KEY (id_user) REFERENCES user (id),
+    FOREIGN KEY (id_user) REFERENCES users (id),
     FOREIGN KEY (id_role) REFERENCES roles (id)
 )

@@ -4,6 +4,7 @@ import ru.danil42russia.aaa.domain.ExitCode
 import ru.danil42russia.aaa.domain.User
 import ru.danil42russia.aaa.service.BusinessLogic
 import ru.danil42russia.aaa.service.CmdService
+import ru.danil42russia.aaa.service.MigrationService
 import ru.danil42russia.aaa.service.UserService
 import kotlin.system.exitProcess
 
@@ -11,6 +12,7 @@ fun main(args: Array<String>) {
     val cmdService = CmdService()
     val businessLogic = BusinessLogic()
     val userService = UserService()
+    val migrationService = MigrationService()
 
     val users = listOf(
         User(
@@ -24,6 +26,8 @@ fun main(args: Array<String>) {
         )
 
     )
+
+    migrationService.migrate()
 
     val cmd = cmdService.parse(args)
 
