@@ -2,8 +2,6 @@ package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager.getLogger
 import ru.danil42russia.aaa.domain.ExitCode
-import ru.danil42russia.aaa.domain.Roles
-import ru.danil42russia.aaa.domain.User
 
 class BusinessLogic {
     private val log = getLogger(BusinessLogic::class.java)
@@ -24,7 +22,6 @@ class BusinessLogic {
         login: String,
         pass: String,
         help: Boolean,
-        users: List<User>,
         cmdService: CmdService,
         userService: UserService
     ): ExitCode {
@@ -44,7 +41,7 @@ class BusinessLogic {
             isEditCode = true
         }
 
-        val user = userService.findUserByLogin(login, users)
+        val user = userService.findUserByLogin(login)
         if (user != null) {
             val hashPassword = userService.encrypt(pass, user.salt)
 
@@ -70,11 +67,11 @@ class BusinessLogic {
      *
      * @return SUCCESS if everything is us, BAD_ROLE if not the right role
      */
-    fun authorization(role: String?, cmdService: CmdService): ExitCode {
+    fun authorization(role: String?, userService: UserService): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         if (role != null) {
-            if (!cmdService.checkRole<Roles>(role)) {
+            if (!userService.checkRole(role)) {
                 log.debug("Wrong role")
                 exitCodes = ExitCode.BAD_ROLE
             }
