@@ -25,7 +25,7 @@ fun main(args: Array<String>) {
         }
 
         if (exitCodes == ExitCode.SUCCESS) {
-            exitCodes = businessLogic.accounting()
+            exitCodes = businessLogic.accounting(cmd.ds, cmd.de, cmd.vol, userService)
         }
     }
     exitProcess(exitCodes.code)

@@ -6,6 +6,7 @@ import ru.danil42russia.aaa.dao.AuthorizationDao
 import ru.danil42russia.aaa.domain.User
 import ru.danil42russia.aaa.utils.sha256
 import java.sql.Connection
+import java.time.LocalDate
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -70,4 +71,12 @@ class UserService(private val connection: Connection) {
 
     fun checkRole(role: String): Boolean =
         authorizationDao.checkRole(role)
+
+    fun checkVolume(vol: Int): Boolean {
+        return vol > 0
+    }
+
+    fun checkDate(ds: LocalDate, de: LocalDate): Boolean {
+        return ds < de
+    }
 }

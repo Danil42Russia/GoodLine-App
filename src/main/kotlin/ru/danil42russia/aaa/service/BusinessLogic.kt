@@ -2,6 +2,7 @@ package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager.getLogger
 import ru.danil42russia.aaa.domain.ExitCode
+import java.time.LocalDate
 
 class BusinessLogic {
     private val log = getLogger(BusinessLogic::class.java)
@@ -12,7 +13,6 @@ class BusinessLogic {
      * @param login login entered
      * @param pass password entered
      * @param help
-     * @param users list of users
      * @param cmdService
      * @param userService
      *
@@ -63,7 +63,7 @@ class BusinessLogic {
      * Authorizes user
      *
      * @param role role entered
-     * @param cmdService
+     * @param userService
      *
      * @return SUCCESS if everything is us, BAD_ROLE if not the right role
      */
@@ -83,10 +83,14 @@ class BusinessLogic {
     /**
      * Accounts user
      *
-     * @return SUCCESS if everything is us
+     * @return SUCCESS if everything is us, INCORRECT_ACTIVITY if an invalid date or amount
      */
-    fun accounting(): ExitCode {
-        //TODO add INCORRECT_ACTIVITY
-        return ExitCode.SUCCESS
+    fun accounting(ds: LocalDate?, de: LocalDate?, vol: Int?, userService: UserService): ExitCode {
+        var exitCodes: ExitCode = ExitCode.SUCCESS
+        if (ds != null && de != null && vol != null) {
+            if (!userService.checkVolume(vol) || !userService.checkDate(ds, de))
+                exitCodes = ExitCode.INCORRECT_ACTIVITY
+        }
+        return exitCodes
     }
 }
