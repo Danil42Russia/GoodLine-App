@@ -18,7 +18,7 @@ class AuthorizationDao(private val connection: Connection) {
 
         var resultRole = ""
 
-        while (resultSet.next()) {
+        if (resultSet.next()) {
             resultRole = resultSet.getString(1)
         }
 
