@@ -14,9 +14,9 @@ class DBService {
 
         try {
             connection = DriverManager.getConnection(
-                System.getenv("DB-URL"),
-                System.getenv("DB-LOGIN"),
-                System.getenv("DB-PASSWORD")
+                System.getenv("DBURL"),
+                System.getenv("DBLOGIN"),
+                System.getenv("DBPASSWORD")
             )
             log.debug("Connection successful")
         } catch (ex: Exception) {
