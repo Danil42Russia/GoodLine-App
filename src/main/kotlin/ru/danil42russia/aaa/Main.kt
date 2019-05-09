@@ -28,5 +28,7 @@ fun main(args: Array<String>) {
             exitCodes = businessLogic.accounting(cmd.ds, cmd.de, cmd.vol, userService)
         }
     }
+
+    dbService.close()
     exitProcess(exitCodes.code)
 }

@@ -33,6 +33,9 @@ class AuthenticationDao(private val connection: Connection) {
             salt = resultSet.getString(2)
         }
 
+        resultSet.close()
+        preparedStatement.close()
+
         return when {
             pass == "" || salt == "" -> null
             else -> User(login, pass, salt)

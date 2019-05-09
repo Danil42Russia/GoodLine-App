@@ -22,6 +22,9 @@ class AuthorizationDao(private val connection: Connection) {
             resultRole = resultSet.getString(1)
         }
 
+        resultSet.close()
+        preparedStatement.close()
+
         return resultRole == role
     }
 }
