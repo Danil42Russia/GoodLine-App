@@ -26,11 +26,11 @@ fun main(args: Array<String>) {
 
         exitCodes = businessLogic.authentication(cmd.login, cmd.pass, cmd.help, authenticationDao)
 
-        if (exitCodes == ExitCode.SUCCESS) {
+        if (exitCodes == ExitCode.SUCCESS && cmdService.isAuthorization) {
             exitCodes = businessLogic.authorization(cmd.role, authorizationDao)
         }
 
-        if (exitCodes == ExitCode.SUCCESS) {
+        if (exitCodes == ExitCode.SUCCESS && cmdService.isAccounting) {
             exitCodes = businessLogic.accounting(cmd.ds, cmd.de, cmd.vol)
         }
     }

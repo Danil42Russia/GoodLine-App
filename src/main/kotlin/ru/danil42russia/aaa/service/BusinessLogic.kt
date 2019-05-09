@@ -65,14 +65,12 @@ class BusinessLogic(private val cmdService: CmdService, private val userService:
      *
      * @return SUCCESS if everything is us, BAD_ROLE if not the right role
      */
-    fun authorization(role: String?, authorizationDao: AuthorizationDao): ExitCode {
+    fun authorization(role: String, authorizationDao: AuthorizationDao): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
-        if (role != null) {
-            if (!authorizationDao.checkRole(role)) {
-                log.debug("Wrong role")
-                exitCodes = ExitCode.BAD_ROLE
-            }
+        if (!authorizationDao.checkRole(role)) {
+            log.debug("Wrong role")
+            exitCodes = ExitCode.BAD_ROLE
         }
         //TODO add NOT_PERMISSION
         return exitCodes
@@ -83,11 +81,11 @@ class BusinessLogic(private val cmdService: CmdService, private val userService:
      *
      * @return SUCCESS if everything is us, INCORRECT_ACTIVITY if an invalid date or amount
      */
-    fun accounting(ds: LocalDate?, de: LocalDate?, vol: Int?): ExitCode {
+    fun accounting(ds: LocalDate, de: LocalDate, vol: Int): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
-        if (ds != null && de != null && vol != null) {
-            if (!userService.checkVolume(vol) || !userService.checkDate(ds, de))
-                exitCodes = ExitCode.INCORRECT_ACTIVITY
+
+        if (!userService.checkVolume(vol) || !userService.checkDate(ds, de)) {
+            exitCodes = ExitCode.INCORRECT_ACTIVITY
         }
         return exitCodes
     }

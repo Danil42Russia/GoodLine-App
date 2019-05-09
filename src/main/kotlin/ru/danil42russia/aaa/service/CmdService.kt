@@ -10,6 +10,11 @@ class CmdService {
     private val log = LogManager.getLogger(BusinessLogic::class.java)
     private val options = Options()
 
+    var isAuthorization: Boolean = false
+        private set
+    var isAccounting: Boolean = false
+        private set
+
     init {
         options.addOption(Option("login", true, "Login"))
         options.addOption(Option("pass", true, "Pass"))
@@ -31,12 +36,13 @@ class CmdService {
         var pass = ""
         var help: Boolean
 
-        var res: String? = null
-        var role: String? = null
+        var res = ""
+        var role = ""
 
-        var ds: LocalDate? = null
-        var de: LocalDate? = null
-        var vol: Int? = null
+        //TODO изменить на String
+        var ds: LocalDate = LocalDate.now()
+        var de: LocalDate = LocalDate.now()
+        var vol = 0
 
         val cl: CommandLine
 
@@ -50,12 +56,14 @@ class CmdService {
             if (isAuthorization(cl)) {
                 res = cl.getOptionValue("res")
                 role = cl.getOptionValue("role")
+                isAuthorization = true
             }
 
             if (isAccounting(cl)) {
                 ds = parseData(cl.getOptionValue("ds"))
                 de = parseData(cl.getOptionValue("de"))
                 vol = cl.getOptionValue("vol").toInt()
+                isAccounting = true
             }
 
             log.debug("Parse successful")
