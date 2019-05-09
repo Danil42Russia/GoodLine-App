@@ -13,7 +13,11 @@ class DBService {
         Class.forName("org.sqlite.JDBC")
 
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:aaa.db")
+            connection = DriverManager.getConnection(
+                System.getenv("DB-URL"),
+                System.getenv("DB-LOGIN"),
+                System.getenv("DB-PASSWORD")
+            )
             log.debug("Connection successful")
         } catch (ex: Exception) {
             log.debug("Connection failed $ex")

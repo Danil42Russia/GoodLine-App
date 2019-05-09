@@ -9,7 +9,11 @@ class MigrationService {
     private val flyway: Flyway = Flyway()
 
     init {
-        flyway.setDataSource("jdbc:sqlite:aaa.db", "", "")
+        flyway.setDataSource(
+            System.getenv("DB-URL"),
+            System.getenv("DB-LOGIN"),
+            System.getenv("DB-PASSWORD")
+        )
         flyway.setLocations("filesystem:src/main/resources/db/migration")
     }
 
