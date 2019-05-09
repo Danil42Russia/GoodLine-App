@@ -22,6 +22,10 @@ class DBService {
         } catch (ex: Exception) {
             log.debug("Connection failed $ex")
             connection = null
+        } finally {
+            if (connection == null) {
+                close()
+            }
         }
 
     }
@@ -32,5 +36,6 @@ class DBService {
 
     fun close() {
         connection?.close()
+        log.debug("Connection close")
     }
 }
