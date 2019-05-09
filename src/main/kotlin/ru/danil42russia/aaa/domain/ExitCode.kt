@@ -10,4 +10,5 @@ enum class ExitCode(val code: Int) {
     BAD_ROLE(5),
     NOT_PERMISSION(6),
     INCORRECT_ACTIVITY(7),
+    OTHER(255),
 }

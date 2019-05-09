@@ -7,22 +7,25 @@ import ru.danil42russia.aaa.service.*
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
-    val cmdService = CmdService()
-    val userService = UserService()
+    var exitCodes: ExitCode
+
     val migrationService = MigrationService()
-    val dbService = DBService()
-
     migrationService.migrate()
+
+    val dbService = DBService()
     val connection = dbService.getConnection()
-    var exitCodes = ExitCode.NO_AUTH
 
-    if (connection != null) {
-        val businessLogic = BusinessLogic(cmdService, userService)
+    val cmdService = CmdService()
+    val cmd = cmdService.parse(args)
 
-        val authenticationDao = AuthenticationDao(connection)
+    val userService = UserService()
+
+    val businessLogic = BusinessLogic(cmdService, userService)
+
+    exitCodes = dbService.isOpen()
+    if (exitCodes == ExitCode.SUCCESS) {
+        val authenticationDao = AuthenticationDao(connection!!)
         val authorizationDao = AuthorizationDao(connection)
-
-        val cmd = cmdService.parse(args)
 
         exitCodes = businessLogic.authentication(cmd.login, cmd.pass, cmd.help, authenticationDao)
 
