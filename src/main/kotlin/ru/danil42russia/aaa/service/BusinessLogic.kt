@@ -1,10 +1,12 @@
 package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager.getLogger
+import ru.danil42russia.aaa.dao.AuthenticationDao
+import ru.danil42russia.aaa.dao.AuthorizationDao
 import ru.danil42russia.aaa.domain.ExitCode
 import java.time.LocalDate
 
-class BusinessLogic {
+class BusinessLogic(private val cmdService: CmdService, private val userService: UserService) {
     private val log = getLogger(BusinessLogic::class.java)
 
     /**
@@ -13,8 +15,6 @@ class BusinessLogic {
      * @param login login entered
      * @param pass password entered
      * @param help
-     * @param cmdService
-     * @param userService
      *
      * @return SUCCESS if everything is us, HELP if a wrong argument or need to get help, BAD_LOGIN_FORMAT if login format is incorrect, BAD_LOGIN if the user is not found, BAD_PASSWORD if the password is incorrect
      */
@@ -22,8 +22,7 @@ class BusinessLogic {
         login: String,
         pass: String,
         help: Boolean,
-        cmdService: CmdService,
-        userService: UserService
+        authenticationDao: AuthenticationDao
     ): ExitCode {
         var isEditCode = false //Используется для предотвращение изменения exitCodes
         var exitCodes: ExitCode = ExitCode.SUCCESS
@@ -41,7 +40,7 @@ class BusinessLogic {
             isEditCode = true
         }
 
-        val user = userService.findUserByLogin(login)
+        val user = authenticationDao.findUserByLogin(login)
         if (user != null) {
             val hashPassword = userService.encrypt(pass, user.salt)
 
@@ -63,15 +62,14 @@ class BusinessLogic {
      * Authorizes user
      *
      * @param role role entered
-     * @param userService
      *
      * @return SUCCESS if everything is us, BAD_ROLE if not the right role
      */
-    fun authorization(role: String?, userService: UserService): ExitCode {
+    fun authorization(role: String?, authorizationDao: AuthorizationDao): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
         if (role != null) {
-            if (!userService.checkRole(role)) {
+            if (!authorizationDao.checkRole(role)) {
                 log.debug("Wrong role")
                 exitCodes = ExitCode.BAD_ROLE
             }
@@ -85,7 +83,7 @@ class BusinessLogic {
      *
      * @return SUCCESS if everything is us, INCORRECT_ACTIVITY if an invalid date or amount
      */
-    fun accounting(ds: LocalDate?, de: LocalDate?, vol: Int?, userService: UserService): ExitCode {
+    fun accounting(ds: LocalDate?, de: LocalDate?, vol: Int?): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
         if (ds != null && de != null && vol != null) {
             if (!userService.checkVolume(vol) || !userService.checkDate(ds, de))
