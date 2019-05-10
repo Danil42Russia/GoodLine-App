@@ -7,6 +7,10 @@ import ru.danil42russia.aaa.service.*
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
+    exitProcess(application(args))
+}
+
+fun application(args: Array<String>): Int {
     var exitCodes: ExitCode
 
     val migrationService = MigrationService()
@@ -39,5 +43,5 @@ fun main(args: Array<String>) {
     }
 
     dbService.close()
-    exitProcess(exitCodes.code)
+    return exitCodes.code
 }
