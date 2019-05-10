@@ -8,10 +8,11 @@
    
 4. Для отчёта по покрытию кода использовать [Сodecov](https://codecov.io)
     + 4.1 в ``.travis.yml`` добавить  
-    ```
-    after_success:
-        - bash <(curl -s https://codecov.io/bash)
-    ```
+    
+        ```
+        after_success:
+            - bash <(curl -s https://codecov.io/bash)
+        ```
     + 4.2 В ``README.md`` дабвить статус анализа
     
 5. Для отчёта по проверки на codestyle использовать [INSPECODE](https://inspecode.rocro.com/)
