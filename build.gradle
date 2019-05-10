@@ -16,6 +16,7 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
+        jcenter()
     }
 
     apply plugin: 'kotlin'
@@ -31,5 +32,16 @@ allprojects {
         compile group: "org.flywaydb", name: "flyway-core", version: "$flyway_core_version"
 
         compile group: "org.xerial", name: "sqlite-jdbc", version: "$sqlite_jdbc_version"
+
+        testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek_version"
+        testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spek_version"
+
+        testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    }
+
+    test {
+        useJUnitPlatform {
+            includeEngines 'spek2'
+        }
     }
 }
