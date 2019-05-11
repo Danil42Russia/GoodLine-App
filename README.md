@@ -6,6 +6,10 @@
 
 Протестировано через **Travis-Ci** [![Build Status](https://travis-ci.com/Danil42Russia/GoodLine-App.svg?branch=master)](https://travis-ci.com/Danil42Russia/GoodLine-App)
 
+## Codecov
+
+Покрытие кода [![codecov](https://codecov.io/gh/Danil42Russia/GoodLine-App/branch/master/graph/badge.svg)](https://codecov.io/gh/Danil42Russia/GoodLine-App)
+
 ## План работ:
 
 [План работ №1](Roadmap1.md)
@@ -19,10 +23,10 @@
 ## Инструкции
 
 ### Инструкция по сборке
-За сборку приложения отвечает файл **BUILD.sh**
+``gradlew bild``
 
 ### Инструкция по запуску
-За запуск приложения отвечает файл **RUN.sh**
+``gradlew bild``
 
 ### Инструкция по тестированию
-За тестирование приложения отвечает файл **TEST.sh**
+``gradlew test``
