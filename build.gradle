@@ -45,4 +45,24 @@ allprojects {
             includeEngines 'spek2'
         }
     }
+
+    apply plugin: 'jacoco'
+    jacoco {
+        toolVersion = "$jacoco_version"
+    }
+
+    task codeCoverageReport(type: JacocoReport) {
+        executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+        sourceSets sourceSets.main
+
+        reports {
+            xml.enabled = true
+            xml.destination file("${buildDir}/reports/jacoco/report.xml")
+            html.enabled = false
+            csv.enabled = false
+        }
+    }
+
+    codeCoverageReport.dependsOn test
+    check.dependsOn codeCoverageReport
 }
