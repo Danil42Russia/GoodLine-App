@@ -5,12 +5,19 @@ language: java
 jdk:
   - openjdk11
 
+addons:
+  sonarcloud:
+    organization: $SONAR_ORGANIZATION
+    token:
+      secure: $SONAR_TOKEN
+
 before_script:
   - chmod +x gradlew
 
 script:
   - ./gradlew check
   - ./gradlew codeCoverageReport
+  - sonar-scanner
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
