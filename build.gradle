@@ -1,17 +1,19 @@
 buildscript {
+    apply from: 'versions.gradle'
+
     repositories {
         mavenLocal()
         mavenCentral()
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
     }
 }
 
 allprojects {
     group = "ru.danil42russia.aaa"
-    version = "$project_version"
+    version = "$versions.project"
 
     repositories {
         mavenLocal()
@@ -22,22 +24,22 @@ allprojects {
     apply plugin: 'kotlin'
 
     dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
 
-        implementation group: "commons-cli", name: "commons-cli", version: "$cli_version"
+        implementation group: "commons-cli", name: "commons-cli", version: "$versions.cli"
 
-        implementation group: "org.apache.logging.log4j", name: "log4j-api", version: "$log4j_api_version"
-        implementation group: "org.apache.logging.log4j", name: "log4j-core", version: "$log4j_core_version"
+        implementation group: "org.apache.logging.log4j", name: "log4j-api", version: "$versions.log4j_api"
+        implementation group: "org.apache.logging.log4j", name: "log4j-core", version: "$versions.log4j_core"
 
-        implementation group: "org.flywaydb", name: "flyway-core", version: "$flyway_core_version"
+        implementation group: "org.flywaydb", name: "flyway-core", version: "$versions.flyway_core"
 
-        implementation group: "org.xerial", name: "sqlite-jdbc", version: "$sqlite_jdbc_version"
+        implementation group: "org.xerial", name: "sqlite-jdbc", version: "$versions.sqlite_jdbc"
 
-        testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek_version"
-        testImplementation "org.spekframework.spek2:spek-runner-junit5:$spek_version"
+        testImplementation "org.spekframework.spek2:spek-dsl-jvm:$versions.spek"
+        testImplementation "org.spekframework.spek2:spek-runner-junit5:$versions.spek"
 
-        testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-        testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+        testImplementation "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
+        testImplementation "org.jetbrains.kotlin:kotlin-test:$versions.kotlin"
     }
 
     test {
@@ -48,7 +50,7 @@ allprojects {
 
     apply plugin: 'jacoco'
     jacoco {
-        toolVersion = "$jacoco_version"
+        toolVersion = "$versions.jacoco"
     }
 
     task codeCoverageReport(type: JacocoReport) {
