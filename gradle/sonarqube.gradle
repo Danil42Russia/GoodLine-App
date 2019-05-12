@@ -42,9 +42,9 @@ project(':aaa-web') {
             properties['sonar.kotlin.binaries'] = 'build/classes/kotlin/main'
             //properties['sonar.kotlin.test.binaries'] = 'build/classes/kotlin/test'
 
-            //properties['sonar.java.coveragePlugin'] = "jacoco"
-            //properties['sonar.jacoco.reportPath'] = "build/jacoco/test.exec"
-            //properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco.xml'
+            properties['sonar.java.coveragePlugin'] = "jacoco"
+            properties['sonar.jacoco.reportPath'] = "build/jacoco/test.exec"
+            properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco.xml'
         }
     }
 }
