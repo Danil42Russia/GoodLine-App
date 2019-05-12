@@ -32,7 +32,7 @@ allprojects {
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     }
 
-    task stage(dependsOn: ['buildProduct'])
+    task stage(dependsOn: [':aaa-web:buildProduct'])
 }
 
 apply from: './gradle/jacoco.gradle'

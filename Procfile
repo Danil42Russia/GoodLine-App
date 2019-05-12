@@ -1,1 +1,1 @@
-web: gradlew farmRun
+web: gradlew :aaa-web:farmRun
