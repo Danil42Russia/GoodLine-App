@@ -13,7 +13,5 @@ allprojects {
         }
     }
 
-    codeCoverageReport.dependsOn {
-        subprojects*.test
-    }
+    test.finalizedBy jacocoTestReport
 }
