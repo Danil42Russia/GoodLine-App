@@ -26,7 +26,7 @@ project(':aaa-app') {
             properties['sonar.kotlin.binaries'] = 'build/classes/kotlin/main'
             properties['sonar.kotlin.test.binaries'] = 'build/classes/kotlin/test'
 
-            properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco/test/jacoco.xml'
+            properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco.xml'
         }
     }
 }
@@ -35,12 +35,12 @@ project(':aaa-web') {
     sonarqube {
         properties {
             properties['sonar.sources'] = 'src/main'
-            properties['sonar.tests'] = 'src/test'
+            //properties['sonar.tests'] = 'src/test'
 
             properties['sonar.kotlin.binaries'] = 'build/classes/kotlin/main'
-            properties['sonar.kotlin.test.binaries'] = 'build/classes/kotlin/test'
+            //properties['sonar.kotlin.test.binaries'] = 'build/classes/kotlin/test'
 
-            properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco/test/jacoco.xml'
+            properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco.xml'
         }
     }
 }
