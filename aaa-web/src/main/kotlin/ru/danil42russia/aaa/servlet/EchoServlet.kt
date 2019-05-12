@@ -12,6 +12,6 @@ class EchoServlet : HttpServlet() {
     }
 
     override fun doPost(req: HttpServletRequest?, resp: HttpServletResponse?) {
-        req?.getRequestDispatcher("/echo.jsp")?.forward(req, resp)
+        resp?.sendRedirect("get?X=${req?.getParameter("X")}")
     }
 }
