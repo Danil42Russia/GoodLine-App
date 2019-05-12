@@ -8,8 +8,16 @@ buildscript {
     }
 }
 
-repositories {
-    jcenter()
-}
+allprojects {
+    repositories {
+        jcenter()
+    }
 
-apply plugin: 'org.gretty'
+    apply plugin: 'org.gretty'
+
+    gretty {
+        scanInterval = 1
+        host = "0.0.0.0"
+        servletContainer = 'jetty9.4'
+    }
+}
