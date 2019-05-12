@@ -1,2 +1,15 @@
-dependencies {
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.gretty:gretty:$versions.gretty"
+    }
 }
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'org.gretty'
