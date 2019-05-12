@@ -6,10 +6,6 @@
 
 Протестировано через **Travis-Ci** [![Build Status](https://travis-ci.com/Danil42Russia/GoodLine-App.svg?branch=master)](https://travis-ci.com/Danil42Russia/GoodLine-App)
 
-## Codecov
-
-Покрытие кода [![codecov](https://codecov.io/gh/Danil42Russia/GoodLine-App/branch/master/graph/badge.svg)](https://codecov.io/gh/Danil42Russia/GoodLine-App)
-
 ## SonarCloud
 
 Количество багов [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ru.danil42russia.aaa&metric=bugs)](https://sonarcloud.io/dashboard?id=ru.danil42russia.aaa)
@@ -19,6 +15,8 @@
 Количество проблемного кода [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ru.danil42russia.aaa&metric=code_smells)](https://sonarcloud.io/dashboard?id=ru.danil42russia.aaa)
 
 Строк кода [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ru.danil42russia.aaa&metric=ncloc)](https://sonarcloud.io/dashboard?id=ru.danil42russia.aaa)
+
+Покрытие кода [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ru.danil42russia.aaa&metric=coverage)](https://sonarcloud.io/dashboard?id=ru.danil42russia.aaa)
 
 ## План работ:
 
