@@ -10,7 +10,7 @@ allprojects {
 
         reports {
             xml.enabled = true
-            xml.destination file("${buildDir}/reports/jacoco/report.xml")
+            xml.destination file("${buildDir}/reports/jacoco.xml")
             html.enabled = false
             csv.enabled = false
         }
