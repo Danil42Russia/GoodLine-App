@@ -16,6 +16,7 @@ allprojects {
         }
     }
 
-    codeCoverageReport.dependsOn test
-    check.dependsOn codeCoverageReport
+    codeCoverageReport.dependsOn {
+        subprojects*.test
+    }
 }

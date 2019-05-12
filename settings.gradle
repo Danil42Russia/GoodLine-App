@@ -1,1 +1,4 @@
 rootProject.name = 'aaa'
+
+include("aaa-app",
+        "aaa-web")
