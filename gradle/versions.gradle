@@ -17,5 +17,6 @@ versions.spek = "2.0.4"
 // tools
 versions.jacoco = "0.8.4"
 versions.detekt = "1.0.0-RC14"
+versions.sonarqube = "2.7.1"
 
 ext.versions = versions

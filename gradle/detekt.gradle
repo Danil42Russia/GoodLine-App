@@ -3,7 +3,10 @@ allprojects {
     detekt {
         config = files("${project.rootDir}/.detekt.yml")
         filters = '.*/resources/.*,.*/build/.*'
-        input = files("${projectDir}/aaa-app/src", "${projectDir}/aaa-web/src")
+        input = files(
+                "${projectDir}/aaa-app/src",
+                "${projectDir}/aaa-web/src"
+        )
         reports {
             xml {
                 enabled = true

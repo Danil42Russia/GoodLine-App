@@ -13,6 +13,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$versions.detekt"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$versions.sonarqube"
     }
 }
 
@@ -34,3 +35,4 @@ allprojects {
 
 apply from: './gradle/jacoco.gradle'
 apply from: './gradle/detekt.gradle'
+apply from: './gradle/sonarqube.gradle'

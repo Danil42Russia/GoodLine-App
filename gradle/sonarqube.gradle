@@ -1,0 +1,46 @@
+apply plugin: 'org.sonarqube'
+
+sonarqube {
+    properties {
+        properties['sonar.organization'] = System.getenv('SONAR_ORGANIZATION')
+        properties['sonar.login'] = System.getenv('SONAR_TOKEN')
+        properties['sonar.host.url'] = "https://sonarcloud.io"
+
+        properties['sonar.projectKey'] = 'ru.danil42russia.aaa'
+        properties['sonar.projectName'] = 'GoodLine-App'
+        properties['sonar.projectVersion'] = versions.project
+
+        properties['sonar.sourceEncoding'] = 'UTF-8'
+        properties['sonar.scm.provider'] = 'git'
+
+        properties['sonar.kotlin.detekt.reportPaths'] = "${project.rootDir}/build/reports/detekt.xml"
+    }
+}
+
+project(':aaa-app') {
+    sonarqube {
+        properties {
+            properties['sonar.sources'] = 'src/main'
+            properties['sonar.tests'] = 'src/test'
+
+            properties['sonar.kotlin.binaries'] = 'build/classes/kotlin/main'
+            properties['sonar.kotlin.test.binaries'] = 'build/classes/kotlin/test'
+
+            properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco/test/jacoco.xml'
+        }
+    }
+}
+
+project(':aaa-web') {
+    sonarqube {
+        properties {
+            properties['sonar.sources'] = 'src/main'
+            properties['sonar.tests'] = 'src/test'
+
+            properties['sonar.kotlin.binaries'] = 'build/classes/kotlin/main'
+            properties['sonar.kotlin.test.binaries'] = 'build/classes/kotlin/test'
+
+            properties['sonar.coverage.jacoco.xmlReportPaths'] = 'build/reports/jacoco/test/jacoco.xml'
+        }
+    }
+}
