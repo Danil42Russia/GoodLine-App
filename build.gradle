@@ -33,6 +33,8 @@ allprojects {
     }
 }
 
+task stage(dependsOn: ['installDist'])
+
 apply from: './gradle/jacoco.gradle'
 apply from: './gradle/detekt.gradle'
 apply from: './gradle/sonarqube.gradle'
