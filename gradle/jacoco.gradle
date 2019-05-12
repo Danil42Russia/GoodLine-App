@@ -5,7 +5,7 @@ allprojects {
         toolVersion = "$versions.jacoco"
     }
 
-    task codeCoverageReport(type: JacocoReport) {
+    jacocoTestReport {
         reports {
             xml.enabled = true
             xml.destination file("${buildDir}/reports/jacoco.xml")

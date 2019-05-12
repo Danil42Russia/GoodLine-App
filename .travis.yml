@@ -10,7 +10,7 @@ before_script:
 
 script:
   - ./gradlew check
-  - ./gradlew codeCoverageReport
+  - ./gradlew jacocoTestReport
   - ./gradlew sonarqube
 
 after_success:
