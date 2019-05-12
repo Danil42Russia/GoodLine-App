@@ -32,7 +32,7 @@ allprojects {
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     }
 
-    task stage(dependsOn: ['clean', 'build'])
+    task stage(dependsOn: ['buildProduct'])
 }
 
 apply from: './gradle/jacoco.gradle'
