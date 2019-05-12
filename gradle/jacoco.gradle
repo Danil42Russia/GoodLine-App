@@ -6,6 +6,12 @@ allprojects {
     }
 
     task codeCoverageReport(type: JacocoReport) {
+        executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+        subprojects.each {
+            sourceSets it.sourceSets.main
+        }
+
         reports {
             xml.enabled = true
             xml.destination file("${buildDir}/reports/jacoco.xml")
@@ -14,5 +20,7 @@ allprojects {
         }
     }
 
-    test.finalizedBy jacocoTestReport
+    codeCoverageReport.dependsOn {
+        subprojects*.test
+    }
 }
