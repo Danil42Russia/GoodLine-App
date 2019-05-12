@@ -13,6 +13,9 @@ versions.log4j_core = "2.11.2"
 versions.flyway_core = "4.2.0"
 versions.sqlite_jdbc = "3.27.2"
 versions.spek = "2.0.4"
+
+// tools
 versions.jacoco = "0.8.4"
+versions.detekt = "1.0.0-RC14"
 
 ext.versions = versions

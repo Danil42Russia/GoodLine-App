@@ -1,0 +1,17 @@
+allprojects {
+    apply plugin: "io.gitlab.arturbosch.detekt"
+    detekt {
+        config = files("${project.rootDir}/.detekt.yml")
+        filters = '.*/resources/.*,.*/build/.*'
+        input = files("${projectDir}/src")
+        reports {
+            xml {
+                enabled = true
+                destination = file('build/reports/detekt.xml')
+            }
+            html {
+                enabled = false
+            }
+        }
+    }
+}
