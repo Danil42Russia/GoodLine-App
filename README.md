@@ -2,6 +2,10 @@
 
 В репозитории включен Github Pages, который генерирует из README.md статический сайт: [ссылка](https://danil42russia.github.io/GoodLine-App/)
 
+## Heroku
+
+Данный проект развётнут на heroku: [сайт](https://danil42russia-goodline-app.herokuapp.com/)
+
 ## Travis-Ci
 
 Протестировано через **Travis-Ci** [![Build Status](https://travis-ci.com/Danil42Russia/GoodLine-App.svg?branch=master)](https://travis-ci.com/Danil42Russia/GoodLine-App)
