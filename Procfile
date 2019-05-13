@@ -1,1 +1,1 @@
-web: ./gradlew :aaa-web:farmRun
+web: ./gradlew aaa-web:buildProduct && aaa-web/build/output/aaa-web/start.sh
