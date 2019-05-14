@@ -11,9 +11,17 @@
     <servlet-mapping>
         <servlet-name>EchoServlet</servlet-name>
         <url-pattern>/echo/get</url-pattern>
-        <url-pattern>/echo/post</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <display-name>RedirectServlet</display-name>
+        <servlet-name>RedirectServlet</servlet-name>
+        <servlet-class>ru.danil42russia.aaa.servlet.RedirectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RedirectServlet</servlet-name>
+        <url-pattern>/echo/post</url-pattern>
+    </servlet-mapping>
 
     <error-page>
         <error-code>404</error-code>
