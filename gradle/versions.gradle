@@ -1,7 +1,7 @@
 def versions = [:]
 
 // config
-versions.project = "6.1"
+versions.project = "7.0"
 
 // kotlin
 versions.kotlin = "1.3.31"
