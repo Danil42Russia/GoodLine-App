@@ -6,5 +6,5 @@
 *.db
 
 /out
-/build
-target/
+/build/*
+target/*
