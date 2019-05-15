@@ -1,6 +1,7 @@
 package ru.danil42russia.aaa.guice
 
 import com.google.inject.AbstractModule
+import ru.danil42russia.aaa.servlet.AuthorityServlet
 import ru.danil42russia.aaa.servlet.EchoServlet
 import ru.danil42russia.aaa.servlet.RedirectServlet
 import ru.danil42russia.aaa.servlet.UserServlet
@@ -11,5 +12,6 @@ open class ModuleStages : AbstractModule() {
         bind(RedirectServlet::class.java).asEagerSingleton()
 
         bind(UserServlet::class.java).asEagerSingleton()
+        bind(AuthorityServlet::class.java).asEagerSingleton()
     }
 }
