@@ -13,14 +13,18 @@ allprojects {
         jcenter()
     }
 
-    apply plugin: 'org.gretty'
     apply plugin: 'war'
-
+    apply plugin: 'org.gretty'
     gretty {
         scanInterval = 1
         httpPort = System.getenv("PORT") as Integer
         host = "0.0.0.0"
         servletContainer = 'jetty9.4'
         contextPath = ''
+    }
+
+    dependencies {
+        implementation group: "com.google.inject", name: "guice", version: "$versions.guice"
+        implementation group: "com.google.inject.extensions", name: "guice-servlet", version: "$versions.guice"
     }
 }
