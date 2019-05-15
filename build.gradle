@@ -30,6 +30,9 @@ allprojects {
     apply plugin: 'kotlin'
     dependencies {
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+
+        implementation group: "org.apache.logging.log4j", name: "log4j-api", version: "$versions.log4j"
+        implementation group: "org.apache.logging.log4j", name: "log4j-core", version: "$versions.log4j"
     }
 
     task stage(dependsOn: [':aaa-web:buildProduct'])
