@@ -3,25 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-    <servlet>
-        <display-name>EchoServlet</display-name>
-        <servlet-name>EchoServlet</servlet-name>
-        <servlet-class>ru.danil42russia.aaa.servlet.EchoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EchoServlet</servlet-name>
-        <url-pattern>/echo/get</url-pattern>
-    </servlet-mapping>
+    <filter>
+        <filter-name>guiceFilter</filter-name>
+        <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>guiceFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
-    <servlet>
-        <display-name>RedirectServlet</display-name>
-        <servlet-name>RedirectServlet</servlet-name>
-        <servlet-class>ru.danil42russia.aaa.servlet.RedirectServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RedirectServlet</servlet-name>
-        <url-pattern>/echo/post</url-pattern>
-    </servlet-mapping>
+    <listener>
+        <listener-class>ru.danil42russia.aaa.guice.GuiceServletConfig</listener-class>
+    </listener>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 
     <error-page>
         <error-code>404</error-code>
