@@ -14,7 +14,7 @@ class MigrationService {
             System.getenv("DB_LOGIN"),
             System.getenv("DB_PASSWORD")
         )
-        flyway.setLocations("filesystem:src/main/resources/db/migration")
+        flyway.setLocations(System.getenv("MIGRATION_PATH"))
     }
 
     fun migrate() {
