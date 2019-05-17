@@ -43,4 +43,22 @@ class AuthenticationDao(private val connection: Connection) {
             else -> User(id, login, pass, salt)
         }
     }
+
+    fun getAllUsers(): List<User> {
+
+        val sql = "SELECT id, login FROM users"
+        val preparedStatement: PreparedStatement = connection.prepareStatement(sql)
+        val resultSet: ResultSet = preparedStatement.executeQuery()
+
+        val list = mutableListOf<User>()
+
+        while (resultSet.next()) {
+            list.add(User(resultSet.getInt(1), resultSet.getString(2)))
+        }
+
+        resultSet.close()
+        preparedStatement.close()
+
+        return list
+    }
 }
