@@ -20,25 +20,27 @@ class AuthenticationDao(private val connection: Connection) {
      */
     fun findUserByLogin(login: String): User? {
         log.debug("Find user by login")
-        val sql = "SELECT pass, salt FROM users WHERE login = ?"
+        val sql = "SELECT id, pass, salt FROM users WHERE login = ?"
         val preparedStatement: PreparedStatement = connection.prepareStatement(sql)
         preparedStatement.setString(1, login)
         val resultSet: ResultSet = preparedStatement.executeQuery()
 
+        var id = -1
         var pass = ""
         var salt = ""
 
         if (resultSet.next()) {
-            pass = resultSet.getString(1)
-            salt = resultSet.getString(2)
+            id = resultSet.getInt(1)
+            pass = resultSet.getString(2)
+            salt = resultSet.getString(3)
         }
 
         resultSet.close()
         preparedStatement.close()
 
         return when {
-            pass == "" || salt == "" -> null
-            else -> User(login, pass, salt)
+            id == -1 || pass == "" || salt == "" -> null
+            else -> User(id, login, pass, salt)
         }
     }
 }
