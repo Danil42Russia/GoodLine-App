@@ -10,9 +10,9 @@ class MigrationService {
 
     init {
         flyway.setDataSource(
-            System.getenv("DBURL"),
-            System.getenv("DBLOGIN"),
-            System.getenv("DBPASSWORD")
+            System.getenv("DB_URL"),
+            System.getenv("DB_LOGIN"),
+            System.getenv("DB_PASSWORD")
         )
         flyway.setLocations("filesystem:src/main/resources/db/migration")
     }
