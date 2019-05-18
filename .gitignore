@@ -5,6 +5,6 @@
 *.log
 *.db
 
-/out
-/build/*
+out
+build/*
 target/*
