@@ -17,4 +17,8 @@ allprojects {
             }
         }
     }
+
+    dependencies{
+        detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$versions.detekt"
+    }
 }
