@@ -10,8 +10,8 @@ class AuthorityServlet : HttpServlet() {
     @InjectLogger
     private lateinit var logger: Logger
 
-    override fun doGet(req: HttpServletRequest?, resp: HttpServletResponse?) {
+    override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
         logger.debug("Open /ajax/authority")
-        servletContext?.getRequestDispatcher("/authority.html")?.forward(req, resp)
+        servletContext.getRequestDispatcher("/authority.html").forward(request, response)
     }
 }

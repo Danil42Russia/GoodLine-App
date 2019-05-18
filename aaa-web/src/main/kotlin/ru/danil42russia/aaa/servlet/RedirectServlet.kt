@@ -10,8 +10,8 @@ class RedirectServlet : HttpServlet() {
     @InjectLogger
     private lateinit var logger: Logger
 
-    override fun doPost(req: HttpServletRequest?, resp: HttpServletResponse?) {
-        logger.debug("redirect to /echo/get?X=${req?.getParameter("X")}")
-        resp?.sendRedirect("get?X=${req?.getParameter("X")}")
+    override fun doPost(request: HttpServletRequest, response: HttpServletResponse) {
+        logger.debug("redirect to /echo/get?X=${request.getParameter("X")}")
+        response.sendRedirect("get?X=${request.getParameter("X")}")
     }
 }

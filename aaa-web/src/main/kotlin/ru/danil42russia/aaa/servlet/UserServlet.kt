@@ -18,22 +18,22 @@ class UserServlet : HttpServlet() {
     private val dbService = DBService()
 
     @UnstableDefault
-    override fun doGet(request: HttpServletRequest?, response: HttpServletResponse?) {
+    override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
         logger.debug("Open /ajax/user")
 
         val connection = dbService.getConnection()
 
-        response?.contentType = "application/json"
-        response?.characterEncoding = "UTF-8"
+        response.contentType = "application/json"
+        response.characterEncoding = "UTF-8"
 
         if (connection != null) {
             val users = AuthenticationDao(connection).getAllUsers()
 
             val json = Json.stringify(User.serializer().list, users)
 
-            response?.writer?.write(json)
+            response.writer?.write(json)
         } else {
-            response?.writer?.write("[]")
+            response.writer?.write("[]")
         }
     }
 }

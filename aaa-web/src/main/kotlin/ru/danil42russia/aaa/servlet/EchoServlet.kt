@@ -10,8 +10,8 @@ class EchoServlet : HttpServlet() {
     @InjectLogger
     private lateinit var logger: Logger
 
-    override fun doGet(req: HttpServletRequest?, resp: HttpServletResponse?) {
+    override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
         logger.debug("Open /echo/get")
-        servletContext?.getRequestDispatcher("/echo.jsp")?.forward(req, resp)
+        servletContext.getRequestDispatcher("/echo.jsp").forward(request, response)
     }
 }

@@ -6,13 +6,12 @@ import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-
 class ActivityServlet : HttpServlet() {
     @InjectLogger
     private lateinit var logger: Logger
 
-    override fun doGet(req: HttpServletRequest?, resp: HttpServletResponse?) {
+    override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
         logger.debug("Open /ajax/activity")
-        servletContext?.getRequestDispatcher("/activity.html")?.forward(req, resp)
+        servletContext.getRequestDispatcher("/activity.html").forward(request, response)
     }
 }
