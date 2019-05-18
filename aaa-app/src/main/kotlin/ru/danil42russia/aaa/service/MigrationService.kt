@@ -9,12 +9,15 @@ class MigrationService {
     private val flyway: Flyway = Flyway()
 
     init {
+        val dbUrl = System.getenv("DB_URL")
+        val dbLogin = System.getenv("DB_LOGIN")
+        val dbPass = System.getenv("DB_PASSWORD")
+        log.debug("DB data url: $dbUrl, login: $dbLogin, pass: $dbPass")
         flyway.setDataSource(
-            System.getenv("DB_URL"),
-            System.getenv("DB_LOGIN"),
-            System.getenv("DB_PASSWORD")
+            dbUrl,
+            dbLogin,
+            dbPass
         )
-        flyway.setLocations(System.getenv("MIGRATION_PATH"))
     }
 
     fun migrate() {
