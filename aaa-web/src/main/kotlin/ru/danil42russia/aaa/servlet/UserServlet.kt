@@ -27,13 +27,23 @@ class UserServlet : HttpServlet() {
         response.characterEncoding = "UTF-8"
 
         if (connection != null) {
-            val users = AuthenticationDao(connection).getAllUsers()
+            val dao = AuthenticationDao(connection)
+            val json: String
 
-            val json = Json.stringify(User.serializer().list, users)
+            json = when {
+                request.getParameter("id") == null -> {
+                    val users = dao.getAllUsers()
+                    Json.stringify(User.serializer().list, users)
+                }
+                else -> {
+                    val user = dao.getUserByID(request.getParameter("id").toInt())
+                    Json.stringify(User.serializer(), user)
+                }
+            }
 
-            response.writer?.write(json)
+            response.writer.write(json)
         } else {
-            response.writer?.write("[]")
+            response.writer.write("[]")
         }
     }
 }

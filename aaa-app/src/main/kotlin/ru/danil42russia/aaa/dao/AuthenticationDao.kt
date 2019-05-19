@@ -56,4 +56,21 @@ class AuthenticationDao(private val connection: Connection) {
 
         return list
     }
+
+    fun getUserByID(id: Int): User {
+        val sql = "SELECT login FROM users WHERE id = ?"
+
+        var login = ""
+
+        connection.prepareStatement(sql).use { ps ->
+            ps.setInt(1, id)
+            ps.executeQuery().use { rs ->
+                if (rs.next()) {
+                    login = rs.getString(1)
+                }
+            }
+        }
+
+        return User(id, login)
+    }
 }
