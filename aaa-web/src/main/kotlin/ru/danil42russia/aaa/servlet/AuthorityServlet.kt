@@ -35,6 +35,10 @@ class AuthorityServlet : HttpServlet() {
                         val role = dao.getRoleByID(request.getParameter("id").toInt())
                         Json.stringify(Role.serializer(), role)
                     }
+                    request.getParameter("userId") != null -> {
+                        val roles = dao.getRolesByUserID(request.getParameter("userId").toInt())
+                        Json.stringify(Role.serializer().list, roles)
+                    }
                     else -> {
                         val roleList = dao.getAllRoles()
                         Json.stringify(Role.serializer().list, roleList)

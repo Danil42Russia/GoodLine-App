@@ -50,10 +50,30 @@ class AuthorizationDao(private val connection: Connection) {
         connection.prepareStatement(sql).use { ps ->
             ps.setInt(1, id)
             ps.executeQuery().use { rs ->
-                name = rs.getString(1)
+                if (rs.next()) {
+                    name = rs.getString(1)
+                }
             }
         }
 
         return Role(id, name)
+    }
+
+    fun getRolesByUserID(userId: Int): List<Role> {
+        val sql =
+            "SELECT roles.id, roles.name FROM users, roles JOIN users_roles ur ON (users.id = ur.id_user) AND (roles.id = ur.id_role) WHERE users.id = ?"
+
+        val roleList = mutableListOf<Role>()
+
+        connection.prepareStatement(sql).use { ps ->
+            ps.setInt(1, userId)
+            ps.executeQuery().use { rs ->
+                while (rs.next()) {
+                    roleList.add(Role(rs.getInt(1), rs.getString(2)))
+                }
+            }
+        }
+
+        return roleList
     }
 }
