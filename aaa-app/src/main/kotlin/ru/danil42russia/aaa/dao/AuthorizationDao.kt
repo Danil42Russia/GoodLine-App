@@ -1,6 +1,7 @@
 package ru.danil42russia.aaa.dao
 
 import org.apache.logging.log4j.LogManager
+import ru.danil42russia.aaa.domain.Role
 import ru.danil42russia.aaa.service.BusinessLogic
 import java.sql.Connection
 
@@ -23,5 +24,21 @@ class AuthorizationDao(private val connection: Connection) {
         }
 
         return resultRole == role
+    }
+
+    fun getAllRoles(): List<Role> {
+        val sql = "SELECT id, name FROM roles"
+
+        val roleList = mutableListOf<Role>()
+
+        connection.prepareStatement(sql).use { ps ->
+            ps.executeQuery().use { rs ->
+                while (rs.next()) {
+                    roleList.add(Role(rs.getInt(1), rs.getString(2)))
+                }
+            }
+        }
+
+        return roleList
     }
 }
