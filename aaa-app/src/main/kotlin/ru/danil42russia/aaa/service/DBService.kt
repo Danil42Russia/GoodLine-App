@@ -22,7 +22,7 @@ class DBService {
             )
             log.debug("Connection successful")
         } catch (ex: SQLException) {
-            log.debug("Connection failed $ex")
+            log.error("Connection failed $ex")
             connection = null
         } finally {
             if (connection == null) {

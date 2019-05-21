@@ -68,7 +68,7 @@ class CmdService {
 
             log.debug("Parse successful")
         } catch (ex: Exception) {
-            log.debug("Parse failed $ex")
+            log.error("Parse failed $ex")
             help = true
         }
 

@@ -27,7 +27,7 @@ class MigrationService {
             flyway.migrate()
             log.debug("Migration successful")
         } catch (ex: FlywayException) {
-            log.debug("Migration failed $ex")
+            log.error("Migration failed $ex")
         }
     }
 }
