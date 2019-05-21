@@ -41,4 +41,19 @@ class AuthorizationDao(private val connection: Connection) {
 
         return roleList
     }
+
+    fun getRoleByID(id: Int): Role {
+        val sql = "SELECT name FROM roles WHERE id = ?"
+
+        var name = ""
+
+        connection.prepareStatement(sql).use { ps ->
+            ps.setInt(1, id)
+            ps.executeQuery().use { rs ->
+                name = rs.getString(1)
+            }
+        }
+
+        return Role(id, name)
+    }
 }

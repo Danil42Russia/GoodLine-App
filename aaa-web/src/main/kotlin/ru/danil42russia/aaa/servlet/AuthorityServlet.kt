@@ -25,17 +25,25 @@ class AuthorityServlet : HttpServlet() {
 
         response.contentType = "application/json"
         response.characterEncoding = "UTF-8"
+        val json: String
 
-        if (connection != null) {
-            val dao = AuthorizationDao(connection)
-            val json: String
-
-            val roleList = dao.getAllRoles()
-            json = Json.stringify(Role.serializer().list, roleList)
-
-            response.writer.write(json)
-        } else {
-            response.writer.write("[]")
+        json = when {
+            connection != null -> {
+                val dao = AuthorizationDao(connection)
+                when {
+                    request.getParameter("id") != null -> {
+                        val role = dao.getRoleByID(request.getParameter("id").toInt())
+                        Json.stringify(Role.serializer(), role)
+                    }
+                    else -> {
+                        val roleList = dao.getAllRoles()
+                        Json.stringify(Role.serializer().list, roleList)
+                    }
+                }
+            }
+            else -> "[]"
         }
+
+        response.writer.write(json)
     }
 }
