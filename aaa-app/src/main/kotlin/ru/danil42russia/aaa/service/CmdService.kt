@@ -3,8 +3,6 @@ package ru.danil42russia.aaa.service
 import org.apache.commons.cli.*
 import org.apache.logging.log4j.LogManager
 import ru.danil42russia.aaa.domain.Cmd
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class CmdService {
     private val log = LogManager.getLogger(BusinessLogic::class.java)
@@ -39,10 +37,9 @@ class CmdService {
         var res = ""
         var role = ""
 
-        //TODO изменить на String
-        var ds: LocalDate = LocalDate.now()
-        var de: LocalDate = LocalDate.now()
-        var vol = 0
+        var ds = ""
+        var de = ""
+        var vol = ""
 
         val cl: CommandLine
 
@@ -50,8 +47,13 @@ class CmdService {
             cl = clp.parse(options, args)
 
             help = cl.hasOption("help")
-            login = cl.getOptionValue("login")
-            pass = cl.getOptionValue("pass")
+
+            if (isAuthentication(cl)) {
+                login = cl.getOptionValue("login")
+                pass = cl.getOptionValue("pass")
+            } else {
+                help = true
+            }
 
             if (isAuthorization(cl)) {
                 res = cl.getOptionValue("res")
@@ -60,14 +62,14 @@ class CmdService {
             }
 
             if (isAccounting(cl)) {
-                ds = parseData(cl.getOptionValue("ds"))
-                de = parseData(cl.getOptionValue("de"))
-                vol = cl.getOptionValue("vol").toInt()
+                ds = cl.getOptionValue("ds")
+                de = cl.getOptionValue("de")
+                vol = cl.getOptionValue("vol")
                 isAccounting = true
             }
 
             log.debug("Parse successful")
-        } catch (ex: Exception) {
+        } catch (ex: ParseException) {
             log.error("Parse failed $ex")
             help = true
         }
@@ -80,16 +82,15 @@ class CmdService {
         HelpFormatter().printHelp("aaa", options, true)
     }
 
-    private fun isAuthorization(cl: CommandLine) =
-        cl.hasOption("res") && cl.hasOption("role")
+    private fun isAuthentication(cl: CommandLine): Boolean {
+        return cl.hasOption("login") && cl.hasOption("pass")
+    }
 
-    private fun isAccounting(cl: CommandLine) =
-        isAuthorization(cl) && cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")
+    private fun isAuthorization(cl: CommandLine): Boolean {
+        return isAuthentication(cl) && cl.hasOption("res") && cl.hasOption("role")
+    }
 
-    private fun parseData(text: String): LocalDate {
-        log.debug("Parse date")
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-
-        return LocalDate.parse(text, formatter)
+    private fun isAccounting(cl: CommandLine): Boolean {
+        return isAuthorization(cl) && cl.hasOption("ds") && cl.hasOption("de") && cl.hasOption("vol")
     }
 }

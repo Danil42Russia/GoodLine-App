@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager.getLogger
 import ru.danil42russia.aaa.dao.AuthenticationDao
 import ru.danil42russia.aaa.dao.AuthorizationDao
 import ru.danil42russia.aaa.domain.ExitCode
-import java.time.LocalDate
 
 class BusinessLogic(private val cmdService: CmdService, private val userService: UserService) {
     private val log = getLogger(BusinessLogic::class.java)
@@ -81,12 +80,30 @@ class BusinessLogic(private val cmdService: CmdService, private val userService:
      *
      * @return SUCCESS if everything is us, INCORRECT_ACTIVITY if an invalid date or amount
      */
-    fun accounting(ds: LocalDate, de: LocalDate, vol: Int): ExitCode {
+    fun accounting(ds: String, de: String, vol: String): ExitCode {
+        var isEditCode = false //Используется для предотвращение изменения exitCodes
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
-        if (!userService.checkVolume(vol) || !userService.checkDate(ds, de)) {
-            exitCodes = ExitCode.INCORRECT_ACTIVITY
+        val parseDs = userService.parseData(ds)
+        val parseDe = userService.parseData(de)
+
+        if (parseDs == null || parseDe == null) {
+            exitCodes = ExitCode.INVALID_DATE
+            isEditCode = true
+        } else {
+            if (!userService.checkDate(parseDs, parseDe)) {
+                exitCodes = ExitCode.INVALID_DATE
+                isEditCode = true
+            }
         }
+
+        if (!isEditCode) {
+            val parseVol = userService.parseVolume(vol)
+            if (parseVol == null || !userService.checkVolume(parseVol)) {
+                exitCodes = ExitCode.INVALID_VOLUME
+            }
+        }
+
         return exitCodes
     }
 }

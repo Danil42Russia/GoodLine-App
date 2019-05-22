@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager
 import ru.danil42russia.aaa.domain.User
 import ru.danil42russia.aaa.utils.sha256
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -53,11 +55,64 @@ class UserService {
         return user.pass == pass
     }
 
-    fun checkVolume(vol: Int): Boolean {
-        return vol > 0
+    fun parseData(text: String): LocalDate? {
+        log.debug("Parse date")
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+
+        var date: LocalDate?
+        try {
+            log.debug("Date parse successful")
+            date = LocalDate.parse(text, formatter)
+        } catch (ex: DateTimeParseException) {
+            log.error("Date parse failed $ex")
+            date = null
+        }
+
+        return date
     }
 
     fun checkDate(ds: LocalDate, de: LocalDate): Boolean {
-        return ds < de
+        log.debug("Check date difference")
+
+        return when {
+            ds < de -> {
+                log.debug("Check date difference successful")
+                true
+            }
+            else -> {
+                log.debug("Check date difference failed")
+                false
+            }
+        }
+    }
+
+    fun parseVolume(vol: String): Int? {
+        log.debug("Date volume")
+
+        var volume: Int?
+        try {
+            log.debug("Parse volume successful")
+            volume = vol.toInt()
+        } catch (ex: NumberFormatException) {
+            log.error("Parse volume failed $ex")
+            volume = null
+        }
+
+        return volume
+    }
+
+    fun checkVolume(vol: Int): Boolean {
+        log.debug("Check volume difference")
+
+        return when {
+            vol > 0 -> {
+                log.debug("Check volume difference successful")
+                true
+            }
+            else -> {
+                log.debug("Check volume difference failed")
+                false
+            }
+        }
     }
 }

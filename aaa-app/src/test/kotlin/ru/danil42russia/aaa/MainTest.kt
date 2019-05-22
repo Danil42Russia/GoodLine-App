@@ -3,6 +3,7 @@ package ru.danil42russia.aaa
 import org.spekframework.spek2.Spek
 import kotlin.test.assertEquals
 
+@Suppress("unused")
 object MainTest : Spek({
     group("exit-code ") {
         group("code 0") {
@@ -155,7 +156,7 @@ object MainTest : Spek({
 
             test("T7-2") {
                 val args =
-                    "-login user@mk.ru -pass 123456qwerty -res A.B.C -role WRITE -ds 01.01.2019 -de 01.02.2019 -vol -100"
+                    "-login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 2019.01.02 -de 01.01.2019 -vol 100"
                 val code = application(args.toArray())
 
                 assertEquals(7, code)
@@ -163,10 +164,36 @@ object MainTest : Spek({
 
             test("T7-3") {
                 val args =
-                    "-login user@mk.ru -pass 123456qwerty -res A.B.C -role WRITE -ds 01.02.2019 -de 01.01.2019 -vol -100"
+                    "-login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 01.02.2019 -de 2019.01.01 -vol 100"
                 val code = application(args.toArray())
 
                 assertEquals(7, code)
+            }
+
+            test("T7-4") {
+                val args =
+                    "-login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 2019.01.02 -de 01.91.2019 -vol 100"
+                val code = application(args.toArray())
+
+                assertEquals(7, code)
+            }
+        }
+
+        group("code 8") {
+            test("T8-1") {
+                val args =
+                    "-login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 01.01.2019 -de 01.02.2019 -vol WORD"
+                val code = application(args.toArray())
+
+                assertEquals(8, code)
+            }
+
+            test("T8-2") {
+                val args =
+                    "-login user@xyz.com -pass qwerty12345 -res A.B.C -role READ -ds 01.01.2019 -de 01.02.2019 -vol -100"
+                val code = application(args.toArray())
+
+                assertEquals(8, code)
             }
         }
     }
