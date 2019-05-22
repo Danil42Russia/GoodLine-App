@@ -26,9 +26,8 @@ fun application(args: Array<String>): Int {
 
     val businessLogic = BusinessLogic(cmdService, userService)
 
-    exitCodes = dbService.isOpen()
-    if (exitCodes == ExitCode.SUCCESS) {
-        val authenticationDao = AuthenticationDao(connection!!)
+    if (connection != null) {
+        val authenticationDao = AuthenticationDao(connection)
         val authorizationDao = AuthorizationDao(connection)
 
         exitCodes = businessLogic.authentication(cmd.login, cmd.pass, cmd.help, authenticationDao)
@@ -40,6 +39,8 @@ fun application(args: Array<String>): Int {
         if (exitCodes == ExitCode.SUCCESS && cmdService.isAccounting) {
             exitCodes = businessLogic.accounting(cmd.ds, cmd.de, cmd.vol)
         }
+    } else {
+        exitCodes = ExitCode.OTHER
     }
 
     dbService.close()

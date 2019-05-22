@@ -1,7 +1,6 @@
 package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager
-import ru.danil42russia.aaa.domain.ExitCode
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
@@ -34,13 +33,6 @@ class DBService {
 
     fun getConnection(): Connection? {
         return connection
-    }
-
-    fun isOpen(): ExitCode {
-        return when (connection) {
-            null -> ExitCode.OTHER
-            else -> ExitCode.SUCCESS
-        }
     }
 
     fun close() {
