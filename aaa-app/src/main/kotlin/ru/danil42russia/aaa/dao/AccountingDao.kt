@@ -1,6 +1,7 @@
 package ru.danil42russia.aaa.dao
 
 import org.apache.logging.log4j.LogManager
+import ru.danil42russia.aaa.domain.Activity
 import ru.danil42russia.aaa.service.BusinessLogic
 import java.sql.Connection
 
@@ -16,9 +17,9 @@ class AccountingDao(private val connection: Connection) {
         vol: String
     ) {
         log.debug("add activity data to DB")
-        val query =
+        val sql =
             "INSERT INTO activity (id_user, res, roles, dataStart, dataEnd, volume) VALUES ((SELECT id FROM users WHERE login = ?), ?, ?, ?, ?, ?)"
-        connection.prepareStatement(query).use { ps ->
+        connection.prepareStatement(sql).use { ps ->
             ps.setString(1, login)
             ps.setString(2, res)
             ps.setString(3, role)
@@ -27,5 +28,32 @@ class AccountingDao(private val connection: Connection) {
             ps.setInt(6, vol.toInt())
             ps.executeUpdate()
         }
+    }
+
+    fun getAllActivity(): List<Activity> {
+        val sql =
+            "SELECT activity.id, u.login, res, roles, dataStart, dataEnd, volume FROM activity JOIN users u ON activity.id_user = u.id"
+
+        val activityList = mutableListOf<Activity>()
+
+        connection.prepareStatement(sql).use { ps ->
+            ps.executeQuery().use { rs ->
+                while (rs.next()) {
+                    activityList.add(
+                        Activity(
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7)
+                        )
+                    )
+                }
+            }
+        }
+
+        return activityList
     }
 }
