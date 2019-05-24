@@ -33,6 +33,10 @@ class ActivityServlet : HttpServlet() {
                         val activityList = dao.getActivityByID(request.getParameter("id").toInt())
                         Json.stringify(Activity.serializer().list, activityList)
                     }
+                    request.getParameter("authorityId") != null -> {
+                        val activityList = dao.getActivityByAuthorityID(request.getParameter("authorityId").toInt())
+                        Json.stringify(Activity.serializer().list, activityList)
+                    }
                     else -> {
                         val activityList = dao.getAllActivity()
                         Json.stringify(Activity.serializer().list, activityList)
