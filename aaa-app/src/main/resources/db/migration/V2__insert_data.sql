@@ -1,8 +1,10 @@
+-- noinspection SqlResolve
 INSERT INTO roles (name)
 VALUES ("READ"),
        ("WRITE"),
        ("EXECUTE");
 
+-- noinspection SqlResolve
 INSERT INTO users (login, pass, salt)
 VALUES ("user@xyz.com", "605b05f6fcc4eb9013a58287ec82ba935aa81b7f2a747404165caf129384d1e7",
         "b742f2a1ad171e30b1d36af0c0226cc7b003b3e0c4673586cb8b07602f05ed82"),

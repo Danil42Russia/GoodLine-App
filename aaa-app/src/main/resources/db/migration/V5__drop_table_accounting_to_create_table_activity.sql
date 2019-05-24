@@ -1,3 +1,4 @@
+-- noinspection SqlResolve
 DROP TABLE accounting;
 
 CREATE TABLE activity
