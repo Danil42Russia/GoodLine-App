@@ -28,8 +28,16 @@ class ActivityServlet : HttpServlet() {
         val json = when {
             connection != null -> {
                 val dao = AccountingDao(connection)
-                val activityList = dao.getAllActivity()
-                Json.stringify(Activity.serializer().list, activityList)
+                when {
+                    request.getParameter("id") != null -> {
+                        val activityList = dao.getActivityByID(request.getParameter("id").toInt())
+                        Json.stringify(Activity.serializer().list, activityList)
+                    }
+                    else -> {
+                        val activityList = dao.getAllActivity()
+                        Json.stringify(Activity.serializer().list, activityList)
+                    }
+                }
             }
             else -> "[]"
         }

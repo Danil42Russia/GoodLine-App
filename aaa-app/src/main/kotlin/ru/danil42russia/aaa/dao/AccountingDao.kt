@@ -56,4 +56,32 @@ class AccountingDao(private val connection: Connection) {
 
         return activityList
     }
+
+    fun getActivityByID(id: Int): List<Activity> {
+        val sql =
+            "SELECT activity.id, u.login, res, roles, dataStart, dataEnd, volume FROM activity JOIN users u ON activity.id_user = u.id WHERE id_user = ?"
+
+        val activityList = mutableListOf<Activity>()
+
+        connection.prepareStatement(sql).use { ps ->
+            ps.setInt(1, id)
+            ps.executeQuery().use { rs ->
+                while (rs.next()) {
+                    activityList.add(
+                        Activity(
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7)
+                        )
+                    )
+                }
+            }
+        }
+
+        return activityList
+    }
 }
