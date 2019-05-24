@@ -42,6 +42,14 @@ object MainTest : Spek({
 
                 assertEquals(0, code)
             }
+
+            test("T0-6") {
+                val args =
+                    "-pass 123456qwerty -login user@mk.ru -vol 194 -res A.1.a.b.1 -role WRITE -de 23.05.2019 -ds 15.12.2016"
+                val code = application(args.toArray())
+
+                assertEquals(0, code)
+            }
         }
 
         group("code 1") {
