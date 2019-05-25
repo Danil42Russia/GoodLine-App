@@ -2,11 +2,10 @@ package ru.danil42russia.aaa.dao
 
 import org.apache.logging.log4j.LogManager
 import ru.danil42russia.aaa.domain.data.User
-import ru.danil42russia.aaa.service.BusinessLogic
 import java.sql.Connection
 
 class AuthenticationDao(private val connection: Connection) {
-    private val log = LogManager.getLogger(BusinessLogic::class.java)
+    private val log = LogManager.getLogger(AccountingDao::class.java)
 
     /**
      * Looking for a user by login

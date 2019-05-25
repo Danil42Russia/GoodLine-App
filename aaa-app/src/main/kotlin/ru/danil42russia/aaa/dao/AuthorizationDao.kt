@@ -2,11 +2,10 @@ package ru.danil42russia.aaa.dao
 
 import org.apache.logging.log4j.LogManager
 import ru.danil42russia.aaa.domain.data.Authority
-import ru.danil42russia.aaa.service.BusinessLogic
 import java.sql.Connection
 
 class AuthorizationDao(private val connection: Connection) {
-    private val log = LogManager.getLogger(BusinessLogic::class.java)
+    private val log = LogManager.getLogger(AccountingDao::class.java)
 
     fun getAllAuthority(): List<Authority> {
         val sql = "SELECT id, id_user, id_role, res FROM users_roles"
