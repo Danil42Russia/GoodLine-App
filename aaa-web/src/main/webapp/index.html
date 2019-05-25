@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
-<body>
+<br>
 <form action="/echo/post" method="post">
     <p>
         <input type="text" name="X">
@@ -13,6 +13,28 @@
         <button type="submit">Send</button>
     </p>
 </form>
-<a href="/echo/get?X=test">GET request</a>
+<a href="/echo/get?X=test">GET request</a><br/>
+<br/>
+
+<a href="/ajax/user">User list</a><br/>
+<a href="/ajax/user?id=1">User 1</a><br/>
+<a href="/ajax/user?id=2">User 2</a><br/>
+<br/>
+
+<a href="/ajax/authority">Roles list</a><br/>
+<a href="/ajax/authority?id=1">Role 1</a><br/>
+<a href="/ajax/authority?id=2">Role 2</a><br/>
+<a href="/ajax/authority?id=3">Role 3</a><br/>
+<a href="/ajax/authority?userId=1">Role of the user 1</a><br/>
+<a href="/ajax/authority?userId=2">Role of the user 2</a><br/>
+<br/>
+
+<a href="/ajax/activity">Activity list</a><br/>
+<a href="/ajax/activity?id=1">Activity 1</a><br/>
+<a href="/ajax/activity?authorityId=1">Activity of the role READ</a><br/>
+<a href="/ajax/activity?authorityId=2">Activity of the role WRITE</a><br/>
+<a href="/ajax/activity?authorityId=3">Activity of the role EXECUTE</a><br/>
+<br/>
+
 </body>
 </html>
