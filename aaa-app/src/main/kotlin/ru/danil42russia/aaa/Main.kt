@@ -1,5 +1,6 @@
 package ru.danil42russia.aaa
 
+import ru.danil42russia.aaa.dao.AccountingDao
 import ru.danil42russia.aaa.dao.AuthenticationDao
 import ru.danil42russia.aaa.domain.enums.ExitCode
 import ru.danil42russia.aaa.service.*
@@ -27,6 +28,7 @@ fun application(args: Array<String>): Int {
 
     if (connection != null) {
         val authenticationDao = AuthenticationDao(connection)
+        val accountingDao = AccountingDao(connection)
 
         exitCodes = businessLogic.authentication(cmd.login, cmd.pass, cmd.help, authenticationDao)
 
@@ -36,6 +38,16 @@ fun application(args: Array<String>): Int {
 
         if (exitCodes == ExitCode.SUCCESS && cmdService.isAccounting) {
             exitCodes = businessLogic.accounting(cmd.ds, cmd.de, cmd.vol)
+            if (exitCodes == ExitCode.SUCCESS) {
+                accountingDao.addActivity(
+                    cmd.login,
+                    userService.getRoleID(cmd.role),
+                    cmd.res,
+                    cmd.ds,
+                    cmd.de,
+                    cmd.vol.toInt()
+                )
+            }
         }
     } else {
         exitCodes = ExitCode.OTHER
