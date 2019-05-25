@@ -64,6 +64,10 @@ class UserService {
         return roles != null
     }
 
+    fun getRoleID(role: String): Int {
+        return Roles.values().find { it.name == role }?.code!!
+    }
+
     fun parseDate(text: String): LocalDate? {
         log.debug("Parse date")
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")

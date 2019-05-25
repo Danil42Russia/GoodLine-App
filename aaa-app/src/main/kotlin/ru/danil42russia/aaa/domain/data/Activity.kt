@@ -5,10 +5,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Activity(
     val id: Int,
-    val login: String,
-    val res: String,
-    val role: String,
+    val id_ur: Int,
     val ds: String,
     val de: String,
-    val vol: String
+    val vol: Int
 )
