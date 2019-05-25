@@ -64,7 +64,7 @@ class UserService {
         return roles != null
     }
 
-    fun parseData(text: String): LocalDate? {
+    fun parseDate(text: String): LocalDate? {
         log.debug("Parse date")
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
 

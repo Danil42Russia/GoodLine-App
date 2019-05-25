@@ -83,8 +83,8 @@ class BusinessLogic(private val cmdService: CmdService, private val userService:
         var isEditCode = false //Используется для предотвращение изменения exitCodes
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
-        val parseDs = userService.parseData(ds)
-        val parseDe = userService.parseData(de)
+        val parseDs = userService.parseDate(ds)
+        val parseDe = userService.parseDate(de)
 
         if (parseDs == null || parseDe == null) {
             exitCodes = ExitCode.INVALID_DATE
