@@ -5,7 +5,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import org.apache.logging.log4j.Logger
 import ru.danil42russia.aaa.dao.AuthorizationDao
-import ru.danil42russia.aaa.domain.Role
+import ru.danil42russia.aaa.domain.Authority
 import ru.danil42russia.aaa.guice.modules.log.InjectLogger
 import ru.danil42russia.aaa.service.DBService
 import javax.servlet.http.HttpServlet
@@ -32,16 +32,16 @@ class AuthorityServlet : HttpServlet() {
                 val dao = AuthorizationDao(connection)
                 when {
                     request.getParameter("id") != null -> {
-                        val role = dao.getRoleByID(request.getParameter("id").toInt())
-                        Json.stringify(Role.serializer(), role)
+                        val authorityList = dao.getAuthorityByID(request.getParameter("id").toInt())
+                        Json.stringify(Authority.serializer().list, authorityList)
                     }
                     request.getParameter("userId") != null -> {
-                        val roles = dao.getRolesByUserID(request.getParameter("userId").toInt())
-                        Json.stringify(Role.serializer().list, roles)
+                        val authorityList = dao.getAuthorityByUserID(request.getParameter("userId").toInt())
+                        Json.stringify(Authority.serializer().list, authorityList)
                     }
                     else -> {
-                        val roleList = dao.getAllRoles()
-                        Json.stringify(Role.serializer().list, roleList)
+                        val authorityList = dao.getAllAuthority()
+                        Json.stringify(Authority.serializer().list, authorityList)
                     }
                 }
             }

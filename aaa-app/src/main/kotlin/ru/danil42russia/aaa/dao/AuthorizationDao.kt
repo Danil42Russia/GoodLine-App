@@ -1,79 +1,57 @@
 package ru.danil42russia.aaa.dao
 
 import org.apache.logging.log4j.LogManager
-import ru.danil42russia.aaa.domain.Role
+import ru.danil42russia.aaa.domain.Authority
 import ru.danil42russia.aaa.service.BusinessLogic
 import java.sql.Connection
 
 class AuthorizationDao(private val connection: Connection) {
     private val log = LogManager.getLogger(BusinessLogic::class.java)
 
-    fun checkRole(role: String): Boolean {
-        log.debug("Find role in the DB")
-        val sql = "SELECT name FROM roles WHERE name = ?"
-
-        var resultRole = ""
-
-        connection.prepareStatement(sql).use { ps ->
-            ps.setString(1, role)
-            ps.executeQuery().use { rs ->
-                if (rs.next()) {
-                    resultRole = rs.getString(1)
-                }
-            }
-        }
-
-        return resultRole == role
-    }
-
-    fun getAllRoles(): List<Role> {
-        val sql = "SELECT id, name FROM roles"
-
-        val roleList = mutableListOf<Role>()
+    fun getAllAuthority(): List<Authority> {
+        val sql = "SELECT id, id_user, id_role, res FROM users_roles"
+        val authorityList = mutableListOf<Authority>()
 
         connection.prepareStatement(sql).use { ps ->
             ps.executeQuery().use { rs ->
                 while (rs.next()) {
-                    roleList.add(Role(rs.getInt(1), rs.getString(2)))
+                    authorityList.add(Authority(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4)))
                 }
             }
         }
 
-        return roleList
+        return authorityList
     }
 
-    fun getRoleByID(id: Int): Role {
-        val sql = "SELECT name FROM roles WHERE id = ?"
-
-        var name = ""
+    fun getAuthorityByID(id: Int): List<Authority> {
+        val sql = "SELECT id, id_user, id_role, res FROM users_roles WHERE id = ?"
+        val authorityList = mutableListOf<Authority>()
 
         connection.prepareStatement(sql).use { ps ->
             ps.setInt(1, id)
             ps.executeQuery().use { rs ->
-                if (rs.next()) {
-                    name = rs.getString(1)
+                while (rs.next()) {
+                    authorityList.add(Authority(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4)))
                 }
             }
         }
 
-        return Role(id, name)
+        return authorityList
     }
 
-    fun getRolesByUserID(userId: Int): List<Role> {
-        val sql =
-            "SELECT roles.id, roles.name FROM users, roles JOIN users_roles ur ON (users.id = ur.id_user) AND (roles.id = ur.id_role) WHERE users.id = ?"
-
-        val roleList = mutableListOf<Role>()
+    fun getAuthorityByUserID(userId: Int): List<Authority> {
+        val sql = "SELECT id, id_user, id_role, res FROM users_roles WHERE id_user = ?"
+        val authorityList = mutableListOf<Authority>()
 
         connection.prepareStatement(sql).use { ps ->
             ps.setInt(1, userId)
             ps.executeQuery().use { rs ->
                 while (rs.next()) {
-                    roleList.add(Role(rs.getInt(1), rs.getString(2)))
+                    authorityList.add(Authority(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4)))
                 }
             }
         }
 
-        return roleList
+        return authorityList
     }
 }

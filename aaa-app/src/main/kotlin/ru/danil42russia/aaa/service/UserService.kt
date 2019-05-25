@@ -1,6 +1,7 @@
 package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager
+import ru.danil42russia.aaa.domain.Roles
 import ru.danil42russia.aaa.domain.User
 import ru.danil42russia.aaa.utils.sha256
 import java.time.LocalDate
@@ -53,6 +54,14 @@ class UserService {
     fun validatePass(user: User, pass: String): Boolean {
         log.debug("Validate password")
         return user.pass == pass
+    }
+
+    fun checkRole(role: String): Boolean {
+        log.debug("Find role")
+
+        val roles = Roles.values().find { it.name == role }
+
+        return roles != null
     }
 
     fun parseData(text: String): LocalDate? {

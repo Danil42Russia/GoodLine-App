@@ -2,7 +2,6 @@ package ru.danil42russia.aaa
 
 import ru.danil42russia.aaa.dao.AccountingDao
 import ru.danil42russia.aaa.dao.AuthenticationDao
-import ru.danil42russia.aaa.dao.AuthorizationDao
 import ru.danil42russia.aaa.domain.ExitCode
 import ru.danil42russia.aaa.service.*
 import kotlin.system.exitProcess
@@ -29,13 +28,12 @@ fun application(args: Array<String>): Int {
 
     if (connection != null) {
         val authenticationDao = AuthenticationDao(connection)
-        val authorizationDao = AuthorizationDao(connection)
         val accountingDao = AccountingDao(connection)
 
         exitCodes = businessLogic.authentication(cmd.login, cmd.pass, cmd.help, authenticationDao)
 
         if (exitCodes == ExitCode.SUCCESS && cmdService.isAuthorization) {
-            exitCodes = businessLogic.authorization(cmd.role, authorizationDao)
+            exitCodes = businessLogic.authorization(cmd.role, userService)
         }
 
         if (exitCodes == ExitCode.SUCCESS && cmdService.isAccounting) {

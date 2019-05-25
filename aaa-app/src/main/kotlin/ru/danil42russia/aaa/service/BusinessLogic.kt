@@ -2,7 +2,6 @@ package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager.getLogger
 import ru.danil42russia.aaa.dao.AuthenticationDao
-import ru.danil42russia.aaa.dao.AuthorizationDao
 import ru.danil42russia.aaa.domain.ExitCode
 
 class BusinessLogic(private val cmdService: CmdService, private val userService: UserService) {
@@ -64,10 +63,10 @@ class BusinessLogic(private val cmdService: CmdService, private val userService:
      *
      * @return SUCCESS if everything is us, BAD_ROLE if not the right role
      */
-    fun authorization(role: String, authorizationDao: AuthorizationDao): ExitCode {
+    fun authorization(role: String, userService: UserService): ExitCode {
         var exitCodes: ExitCode = ExitCode.SUCCESS
 
-        if (!authorizationDao.checkRole(role)) {
+        if (!userService.checkRole(role)) {
             log.debug("Wrong role")
             exitCodes = ExitCode.BAD_ROLE
         }
