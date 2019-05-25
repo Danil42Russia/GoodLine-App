@@ -2,7 +2,7 @@ package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager.getLogger
 import ru.danil42russia.aaa.dao.AuthenticationDao
-import ru.danil42russia.aaa.domain.ExitCode
+import ru.danil42russia.aaa.domain.enums.ExitCode
 
 class BusinessLogic(private val cmdService: CmdService, private val userService: UserService) {
     private val log = getLogger(BusinessLogic::class.java)

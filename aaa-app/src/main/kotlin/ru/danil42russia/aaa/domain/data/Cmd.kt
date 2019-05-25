@@ -1,4 +1,4 @@
-package ru.danil42russia.aaa.domain
+package ru.danil42russia.aaa.domain.data
 
 data class Cmd(
     val login: String,

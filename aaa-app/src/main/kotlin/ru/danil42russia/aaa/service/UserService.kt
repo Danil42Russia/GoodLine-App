@@ -1,8 +1,8 @@
 package ru.danil42russia.aaa.service
 
 import org.apache.logging.log4j.LogManager
-import ru.danil42russia.aaa.domain.Roles
-import ru.danil42russia.aaa.domain.User
+import ru.danil42russia.aaa.domain.data.User
+import ru.danil42russia.aaa.domain.enums.Roles
 import ru.danil42russia.aaa.utils.sha256
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

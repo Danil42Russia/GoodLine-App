@@ -2,7 +2,7 @@ package ru.danil42russia.aaa.service
 
 import org.apache.commons.cli.*
 import org.apache.logging.log4j.LogManager
-import ru.danil42russia.aaa.domain.Cmd
+import ru.danil42russia.aaa.domain.data.Cmd
 
 class CmdService {
     private val log = LogManager.getLogger(BusinessLogic::class.java)

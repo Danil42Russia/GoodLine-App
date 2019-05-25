@@ -2,7 +2,7 @@ package ru.danil42russia.aaa
 
 import ru.danil42russia.aaa.dao.AccountingDao
 import ru.danil42russia.aaa.dao.AuthenticationDao
-import ru.danil42russia.aaa.domain.ExitCode
+import ru.danil42russia.aaa.domain.enums.ExitCode
 import ru.danil42russia.aaa.service.*
 import kotlin.system.exitProcess
 

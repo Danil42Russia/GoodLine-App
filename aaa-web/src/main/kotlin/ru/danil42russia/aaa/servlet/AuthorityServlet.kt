@@ -5,7 +5,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import org.apache.logging.log4j.Logger
 import ru.danil42russia.aaa.dao.AuthorizationDao
-import ru.danil42russia.aaa.domain.Authority
+import ru.danil42russia.aaa.domain.data.Authority
 import ru.danil42russia.aaa.guice.modules.log.InjectLogger
 import ru.danil42russia.aaa.service.DBService
 import javax.servlet.http.HttpServlet

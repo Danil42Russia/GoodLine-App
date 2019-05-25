@@ -1,7 +1,7 @@
 package ru.danil42russia.aaa.dao
 
 import org.apache.logging.log4j.LogManager
-import ru.danil42russia.aaa.domain.Authority
+import ru.danil42russia.aaa.domain.data.Authority
 import ru.danil42russia.aaa.service.BusinessLogic
 import java.sql.Connection
 
@@ -15,7 +15,14 @@ class AuthorizationDao(private val connection: Connection) {
         connection.prepareStatement(sql).use { ps ->
             ps.executeQuery().use { rs ->
                 while (rs.next()) {
-                    authorityList.add(Authority(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4)))
+                    authorityList.add(
+                        Authority(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getInt(3),
+                            rs.getString(4)
+                        )
+                    )
                 }
             }
         }
@@ -31,7 +38,14 @@ class AuthorizationDao(private val connection: Connection) {
             ps.setInt(1, id)
             ps.executeQuery().use { rs ->
                 while (rs.next()) {
-                    authorityList.add(Authority(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4)))
+                    authorityList.add(
+                        Authority(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getInt(3),
+                            rs.getString(4)
+                        )
+                    )
                 }
             }
         }
@@ -47,7 +61,14 @@ class AuthorizationDao(private val connection: Connection) {
             ps.setInt(1, userId)
             ps.executeQuery().use { rs ->
                 while (rs.next()) {
-                    authorityList.add(Authority(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4)))
+                    authorityList.add(
+                        Authority(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getInt(3),
+                            rs.getString(4)
+                        )
+                    )
                 }
             }
         }
