@@ -59,7 +59,7 @@ class AccountingDao(private val connection: Connection) {
 
     fun getActivityByID(id: Int): List<Activity> {
         val sql =
-            "SELECT activity.id, u.login, res, roles, dataStart, dataEnd, volume FROM activity JOIN users u ON activity.id_user = u.id WHERE id_user = ?"
+            "SELECT activity.id, u.login, res, roles, dataStart, dataEnd, volume FROM activity JOIN users u ON activity.id_user = u.id WHERE activity.id = ?"
 
         val activityList = mutableListOf<Activity>()
 
