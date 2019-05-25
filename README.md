@@ -24,19 +24,19 @@
 
 ## План работ:
 
-[План работ №1](Roadmap1.md)
+[План работ №1](roadmaps/Roadmap1.md)
 
-[План работ №2](Roadmap2.md)
+[План работ №2](roadmaps/Roadmap2.md)
 
-[План работ №3](Roadmap3.md)
+[План работ №3](roadmaps/Roadmap3.md)
 
-[План работ №4](Roadmap4.md)
+[План работ №4](roadmaps/Roadmap4.md)
 
-[План работ №5](Roadmap5.md)
+[План работ №5](roadmaps/Roadmap5.md)
 
-[План работ №6](Roadmap6.md)
+[План работ №6](roadmaps/Roadmap6.md)
 
-[План работ №7](Roadmap7.md)
+[План работ №7](roadmaps/Roadmap7.md)
 
 ## Инструкции
 
