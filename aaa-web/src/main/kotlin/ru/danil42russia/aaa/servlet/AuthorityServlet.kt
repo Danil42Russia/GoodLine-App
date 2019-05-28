@@ -4,7 +4,7 @@ import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import org.apache.logging.log4j.Logger
-import ru.danil42russia.aaa.dao.AuthorizationDao
+import ru.danil42russia.aaa.dao.AuthorityDao
 import ru.danil42russia.aaa.domain.data.Authority
 import ru.danil42russia.aaa.guice.modules.log.InjectLogger
 import ru.danil42russia.aaa.service.DBService
@@ -29,7 +29,7 @@ class AuthorityServlet : HttpServlet() {
 
         json = when {
             connection != null -> {
-                val dao = AuthorizationDao(connection)
+                val dao = AuthorityDao(connection)
                 when {
                     request.getParameter("id") != null -> {
                         val authorityList = dao.getAuthorityByID(request.getParameter("id").toInt())
