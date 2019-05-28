@@ -40,6 +40,8 @@ allprojects {
 
         implementation group: "org.hibernate", name: "hibernate-core", version: "$versions.hibernate_orm"
         implementation group: "org.hibernate", name: "hibernate-entitymanager", version: "$versions.hibernate_orm"
+
+        implementation group: "com.google.inject", name: "guice", version: "$versions.guice"
     }
 
     task stage(dependsOn: [':aaa-web:buildProduct'])
