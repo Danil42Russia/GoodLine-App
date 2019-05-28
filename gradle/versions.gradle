@@ -11,12 +11,11 @@ versions.kotlin_serialization = "0.11.0"
 versions.cli = "1.4"
 versions.log4j = "2.11.2"
 versions.flyway = "4.2.0"
-versions.sqlite_jdbc = "3.27.2"
 versions.spek = "2.0.4"
 versions.gretty = "2.3.1"
 versions.guice = "4.2.2"
 versions.hibernate_orm = "5.4.2.Final"
-versions.h2 = "1.4.199"
+versions.h2_jdbc = "1.4.199"
 
 // tools
 versions.jacoco = "0.8.4"

@@ -3,8 +3,7 @@ dependencies {
 
     implementation group: "org.flywaydb", name: "flyway-core", version: "$versions.flyway"
 
-    implementation group: "org.xerial", name: "sqlite-jdbc", version: "$versions.sqlite_jdbc"
-    implementation group: "com.h2database", name: "h2", version: "$versions.h2"
+    implementation group: "com.h2database", name: "h2", version: "$versions.h2_jdbc"
 
     testImplementation "org.spekframework.spek2:spek-dsl-jvm:$versions.spek"
     testImplementation "org.spekframework.spek2:spek-runner-junit5:$versions.spek"
