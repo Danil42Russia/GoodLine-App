@@ -22,5 +22,9 @@ data class User(
 
     @Column(name = "salt")
     @Transient
-    val salt: String = ""
+    val salt: String = "",
+
+    @Version
+    @Column(name = "version")
+    val version: Int
 )

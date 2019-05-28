@@ -22,5 +22,9 @@ data class Activity(
     val de: String,
 
     @Column(name = "vol")
-    val vol: Int
+    val vol: Int,
+
+    @Version
+    @Column(name = "version")
+    val version: Int
 )

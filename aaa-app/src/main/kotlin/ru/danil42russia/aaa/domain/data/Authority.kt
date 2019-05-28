@@ -19,5 +19,9 @@ data class Authority(
     val id_role: Int,
 
     @Column(name = "res")
-    val res: String
+    val res: String,
+
+    @Version
+    @Column(name = "version")
+    val version: Int
 )
