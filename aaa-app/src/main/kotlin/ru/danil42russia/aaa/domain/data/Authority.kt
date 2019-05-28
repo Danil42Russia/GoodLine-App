@@ -23,5 +23,5 @@ data class Authority(
 
     @Version
     @Column(name = "version")
-    val version: Int
+    val version: Int = 0
 )
