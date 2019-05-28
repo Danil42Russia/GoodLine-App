@@ -4,7 +4,7 @@ import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import org.apache.logging.log4j.Logger
-import ru.danil42russia.aaa.dao.AccountingDao
+import ru.danil42russia.aaa.dao.ActivityDao
 import ru.danil42russia.aaa.domain.data.Activity
 import ru.danil42russia.aaa.guice.modules.log.InjectLogger
 import ru.danil42russia.aaa.service.DBService
@@ -27,7 +27,7 @@ class ActivityServlet : HttpServlet() {
 
         val json = when {
             connection != null -> {
-                val dao = AccountingDao(connection)
+                val dao = ActivityDao(connection)
                 when {
                     request.getParameter("id") != null -> {
                         val activityList = dao.getActivityByID(request.getParameter("id").toInt())
