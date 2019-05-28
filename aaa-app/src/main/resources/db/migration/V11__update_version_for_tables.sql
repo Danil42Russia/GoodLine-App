@@ -1,0 +1,11 @@
+UPDATE users
+SET version = 1
+WHERE VERSION IS NULL;
+
+UPDATE users_roles
+SET version = 1
+WHERE VERSION IS NULL;
+
+UPDATE activity
+SET version = 1
+WHERE VERSION IS NULL;
