@@ -5,11 +5,9 @@
     http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
 
     <persistence-unit name="myFirstJpaUnit" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-
-        <class>ru.danil42russia.aaa.dao.UserDao</class>
-        <class>ru.danil42russia.aaa.dao.AuthorityDao</class>
-        <class>ru.danil42russia.aaa.dao.ActivityDao</class>
+        <class>ru.danil42russia.aaa.domain.data.User</class>
+        <class>ru.danil42russia.aaa.domain.data.Authority</class>
+        <class>ru.danil42russia.aaa.domain.data.Activity</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
