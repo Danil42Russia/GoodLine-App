@@ -1,77 +1,30 @@
 package ru.danil42russia.aaa.dao
 
-import ru.danil42russia.aaa.domain.data.Activity
-import java.sql.Connection
+import com.google.inject.Inject
+import ru.danil42russia.aaa.domain.data.entity.EntityActivity
+import javax.persistence.EntityManager
 
-class ActivityDao(private val connection: Connection) {
-    fun getAllActivity(): List<Activity> {
-        val sql = "SELECT id, id_ur, ds, de, vol FROM activity"
-        val activityList = mutableListOf<Activity>()
+class ActivityDao {
+    @Inject
+    lateinit var em: EntityManager
 
-        connection.prepareStatement(sql).use { ps ->
-            ps.executeQuery().use { rs ->
-                while (rs.next()) {
-                    activityList.add(
-                        Activity(
-                            rs.getInt(1),
-                            rs.getInt(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getInt(5)
-                        )
-                    )
-                }
-            }
-        }
-
-        return activityList
+    fun getAllActivity(): List<EntityActivity> {
+        return em
+            .createQuery("SELECT a FROM activity a ", EntityActivity::class.java)
+            .resultList
     }
 
-    fun getActivityByID(id: Int): List<Activity> {
-        val sql = "SELECT id, id_ur, ds, de, vol FROM activity WHERE id = ?"
-        val activityList = mutableListOf<Activity>()
-
-        connection.prepareStatement(sql).use { ps ->
-            ps.setInt(1, id)
-            ps.executeQuery().use { rs ->
-                while (rs.next()) {
-                    activityList.add(
-                        Activity(
-                            rs.getInt(1),
-                            rs.getInt(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getInt(5)
-                        )
-                    )
-                }
-            }
-        }
-
-        return activityList
+    fun getActivityByID(id: Int): List<EntityActivity> {
+        return em
+            .createQuery("SELECT a FROM activity a  WHERE a.id = :id ", EntityActivity::class.java)
+            .setParameter("id", id)
+            .resultList
     }
 
-    fun getActivityByAuthorityID(authorityId: Int): List<Activity> {
-        val sql = "SELECT id, id_ur, ds, de, vol FROM activity WHERE id_ur = ?"
-        val activityList = mutableListOf<Activity>()
-
-        connection.prepareStatement(sql).use { ps ->
-            ps.setInt(1, authorityId)
-            ps.executeQuery().use { rs ->
-                while (rs.next()) {
-                    activityList.add(
-                        Activity(
-                            rs.getInt(1),
-                            rs.getInt(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getInt(5)
-                        )
-                    )
-                }
-            }
-        }
-
-        return activityList
+    fun getActivityByAuthorityID(authorityId: Int): List<EntityActivity> {
+        return em
+            .createQuery("SELECT a FROM activity a  WHERE a.id_ur = :id_ur ", EntityActivity::class.java)
+            .setParameter("id_ur", authorityId)
+            .resultList
     }
 }

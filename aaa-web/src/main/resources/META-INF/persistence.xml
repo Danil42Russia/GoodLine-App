@@ -7,7 +7,7 @@
     <persistence-unit name="myFirstJpaUnit" transaction-type="RESOURCE_LOCAL">
         <class>ru.danil42russia.aaa.domain.data.entity.EntityUser</class>
         <class>ru.danil42russia.aaa.domain.data.entity.EntityAuthority</class>
-        <class>ru.danil42russia.aaa.domain.data.entity.Activity</class>
+        <class>ru.danil42russia.aaa.domain.data.entity.EntityActivity</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
