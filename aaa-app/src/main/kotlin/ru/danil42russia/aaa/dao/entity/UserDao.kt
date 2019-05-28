@@ -1,4 +1,4 @@
-package ru.danil42russia.aaa.dao
+package ru.danil42russia.aaa.dao.entity
 
 import com.google.inject.Inject
 import ru.danil42russia.aaa.domain.data.entity.EntityUser

@@ -6,7 +6,7 @@ import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import org.apache.logging.log4j.Logger
-import ru.danil42russia.aaa.dao.AuthorityDao
+import ru.danil42russia.aaa.dao.entity.AuthorityDao
 import ru.danil42russia.aaa.domain.data.entity.EntityAuthority
 import ru.danil42russia.aaa.guice.modules.log.InjectLogger
 import javax.servlet.http.HttpServlet
