@@ -4,7 +4,7 @@ import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import org.apache.logging.log4j.Logger
-import ru.danil42russia.aaa.dao.AuthenticationDao
+import ru.danil42russia.aaa.dao.UserDao
 import ru.danil42russia.aaa.domain.data.User
 import ru.danil42russia.aaa.guice.modules.log.InjectLogger
 import ru.danil42russia.aaa.service.DBService
@@ -27,7 +27,7 @@ class UserServlet : HttpServlet() {
         response.characterEncoding = "UTF-8"
 
         if (connection != null) {
-            val dao = AuthenticationDao(connection)
+            val dao = UserDao(connection)
             val json: String
 
             json = when {
