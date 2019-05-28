@@ -16,7 +16,7 @@ class DBService {
         val dbLogin = System.getenv("DB_LOGIN")
         val dbPass = System.getenv("DB_PASSWORD")
 
-        log.debug("DB data class: $dbClass url: $dbUrl, login: $dbLogin, pass: $dbPass")
+        log.debug("DB Connection data -> class: $dbClass url: $dbUrl, login: $dbLogin, pass: $dbPass")
 
         Class.forName(dbClass)
         try {
