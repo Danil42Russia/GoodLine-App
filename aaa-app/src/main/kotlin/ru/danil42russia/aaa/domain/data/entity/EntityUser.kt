@@ -6,9 +6,9 @@ import javax.persistence.*
 
 @Suppress("DATA_CLASS_WITHOUT_PARAMETERS")
 @Serializable
-@Entity
+@Entity(name = "user")
 @Table(name = "users")
-class User {
+class EntityUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", length = 10)
@@ -27,5 +27,6 @@ class User {
 
     @Version
     @Column(name = "version", length = 10)
+    @Transient
     val version: Int = 0
 }

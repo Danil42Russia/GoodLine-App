@@ -5,7 +5,7 @@
     http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
 
     <persistence-unit name="myFirstJpaUnit" transaction-type="RESOURCE_LOCAL">
-        <class>ru.danil42russia.aaa.domain.data.entity.User</class>
+        <class>ru.danil42russia.aaa.domain.data.entity.EntityUser</class>
         <class>ru.danil42russia.aaa.domain.data.entity.Authority</class>
         <class>ru.danil42russia.aaa.domain.data.entity.Activity</class>
 
