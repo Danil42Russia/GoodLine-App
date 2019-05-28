@@ -1,6 +1,6 @@
 create table users_roles_dg_tmp
 (
-    id      INTEGER PRIMARY KEY AUTOINCREMENT,
+    id      INTEGER PRIMARY KEY AUTO_INCREMENT,
     id_user INTEGER,
     id_role INTEGER,
     res     TEXT,
@@ -19,20 +19,20 @@ ALTER TABLE users_roles_dg_tmp
 
 -- noinspection SqlResolve
 UPDATE users_roles
-SET res = "A.B.C"
+SET res = 'A.B.C'
 WHERE id = 1;
 
 -- noinspection SqlResolve
 UPDATE users_roles
-SET res = "A.B"
+SET res = 'A.B'
 WHERE id = 2;
 
 -- noinspection SqlResolve
 UPDATE users_roles
-SET res = "A.B.C.D"
+SET res = 'A.B.C.D'
 WHERE id = 3;
 
 -- noinspection SqlResolve
 UPDATE users_roles
-SET res = "A.B"
+SET res = 'A.B'
 WHERE id = 4;

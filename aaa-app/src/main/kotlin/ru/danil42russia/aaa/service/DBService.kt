@@ -11,14 +11,16 @@ class DBService {
 
     init {
         log.debug("Connection start")
-        Class.forName("org.sqlite.JDBC")
+        val dbClass = System.getenv("DB_CLASS")
+        val dbUrl = System.getenv("DB_URL")
+        val dbLogin = System.getenv("DB_LOGIN")
+        val dbPass = System.getenv("DB_PASSWORD")
 
+        log.debug("DB data class: $dbClass url: $dbUrl, login: $dbLogin, pass: $dbPass")
+
+        Class.forName(dbClass)
         try {
-            connection = DriverManager.getConnection(
-                System.getenv("DB_URL"),
-                System.getenv("DB_LOGIN"),
-                System.getenv("DB_PASSWORD")
-            )
+            connection = DriverManager.getConnection(dbUrl, dbLogin, dbPass)
             log.debug("Connection successful")
         } catch (ex: SQLException) {
             log.error("Connection failed $ex")
