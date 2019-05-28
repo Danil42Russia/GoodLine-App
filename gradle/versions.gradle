@@ -15,6 +15,7 @@ versions.sqlite_jdbc = "3.27.2"
 versions.spek = "2.0.4"
 versions.gretty = "2.3.1"
 versions.guice = "4.2.2"
+versions.hibernate_orm = "5.4.2.Final"
 
 // tools
 versions.jacoco = "0.8.4"

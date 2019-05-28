@@ -37,6 +37,9 @@ allprojects {
 
         implementation group: "org.apache.logging.log4j", name: "log4j-api", version: "$versions.log4j"
         implementation group: "org.apache.logging.log4j", name: "log4j-core", version: "$versions.log4j"
+
+        implementation group: "org.hibernate", name: "hibernate-core", version: "$versions.hibernate_orm"
+        implementation group: "org.hibernate", name: "hibernate-entitymanager", version: "$versions.hibernate_orm"
     }
 
     task stage(dependsOn: [':aaa-web:buildProduct'])

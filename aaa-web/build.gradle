@@ -28,5 +28,6 @@ allprojects {
 
         implementation group: "com.google.inject", name: "guice", version: "$versions.guice"
         implementation group: "com.google.inject.extensions", name: "guice-servlet", version: "$versions.guice"
+        implementation group: "com.google.inject.extensions", name: "guice-persist", version: "$versions.guice"
     }
 }
