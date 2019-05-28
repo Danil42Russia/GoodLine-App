@@ -1,13 +1,14 @@
 package ru.danil42russia.aaa.domain.data.entity
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import javax.persistence.*
 
 @Suppress("DATA_CLASS_WITHOUT_PARAMETERS")
 @Serializable
-@Entity
+@Entity(name = "authority")
 @Table(name = "users_roles")
-data class Authority {
+data class EntityAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", length = 10)
@@ -24,5 +25,6 @@ data class Authority {
 
     @Version
     @Column(name = "version", length = 10)
+    @Transient
     val version: Int = 0
 }

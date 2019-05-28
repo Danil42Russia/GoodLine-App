@@ -1,74 +1,39 @@
 package ru.danil42russia.aaa.dao
 
-import ru.danil42russia.aaa.domain.data.Authority
-import java.sql.Connection
+import com.google.inject.Inject
+import ru.danil42russia.aaa.domain.data.entity.EntityAuthority
+import javax.persistence.EntityManager
 
-class AuthorityDao(private val connection: Connection) {
-    fun getAllAuthority(): List<Authority> {
-        val sql = "SELECT id, id_user, id_role, res FROM users_roles"
-        val authorityList = mutableListOf<Authority>()
+class AuthorityDao {
+    @Inject
+    lateinit var em: EntityManager
 
-        connection.prepareStatement(sql).use { ps ->
-            ps.executeQuery().use { rs ->
-                while (rs.next()) {
-                    authorityList.add(
-                        Authority(
-                            rs.getInt(1),
-                            rs.getInt(2),
-                            rs.getInt(3),
-                            rs.getString(4)
-                        )
-                    )
-                }
-            }
-        }
-
-        return authorityList
+    fun getAllAuthority(): List<EntityAuthority> {
+        return em
+            .createQuery(
+                "select a FROM authority a",
+                EntityAuthority::class.java
+            )
+            .resultList
     }
 
-    fun getAuthorityByID(id: Int): List<Authority> {
-        val sql = "SELECT id, id_user, id_role, res FROM users_roles WHERE id = ?"
-        val authorityList = mutableListOf<Authority>()
-
-        connection.prepareStatement(sql).use { ps ->
-            ps.setInt(1, id)
-            ps.executeQuery().use { rs ->
-                while (rs.next()) {
-                    authorityList.add(
-                        Authority(
-                            rs.getInt(1),
-                            rs.getInt(2),
-                            rs.getInt(3),
-                            rs.getString(4)
-                        )
-                    )
-                }
-            }
-        }
-
-        return authorityList
+    fun getAuthorityByID(id: Int): List<EntityAuthority> {
+        return em
+            .createQuery(
+                "select a FROM authority a WHERE a.id = :id",
+                EntityAuthority::class.java
+            )
+            .setParameter("id", id)
+            .resultList
     }
 
-    fun getAuthorityByUserID(userId: Int): List<Authority> {
-        val sql = "SELECT id, id_user, id_role, res FROM users_roles WHERE id_user = ?"
-        val authorityList = mutableListOf<Authority>()
-
-        connection.prepareStatement(sql).use { ps ->
-            ps.setInt(1, userId)
-            ps.executeQuery().use { rs ->
-                while (rs.next()) {
-                    authorityList.add(
-                        Authority(
-                            rs.getInt(1),
-                            rs.getInt(2),
-                            rs.getInt(3),
-                            rs.getString(4)
-                        )
-                    )
-                }
-            }
-        }
-
-        return authorityList
+    fun getAuthorityByUserID(userId: Int): List<EntityAuthority> {
+        return em
+            .createQuery(
+                "select a FROM authority a WHERE a.id_user = :id_user",
+                EntityAuthority::class.java
+            )
+            .setParameter("id_user", userId)
+            .resultList
     }
 }
