@@ -8,3 +8,5 @@
 out
 build/*
 target/*
+
+node_modules
