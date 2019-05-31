@@ -8,10 +8,49 @@ class None extends React.Component {
 }
 
 class User extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: []
+        }
+    }
+
+    componentWillMount() {
+        jQuery.ajax({
+            url: "/ajax/user",
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function (xhr, status, err) {
+                console.error(this.url, status, err.toString());
+            }.bind(this)
+        });
+    }
+
     render() {
         return (
             <div>
-                User
+                <table>
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>login</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        this.state.data.map(item => (
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.login}</td>
+                            </tr>
+                        ))
+                    }
+                    </tbody>
+                </table>
             </div>
         )
     }
