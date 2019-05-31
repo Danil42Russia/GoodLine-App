@@ -1,37 +1,19 @@
 <!DOCTYPE html>
-<!--suppress ALL -->
-<html lang="ru">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <title>Index</title>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>Learn React</title>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.25.0/babel.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<form action="/echo/post" method="post">
-    <p>
-        <input type="text" name="X">
-    </p>
-    <p>
-        <button type="submit">Send</button>
-    </p>
-</form>
-<a href="/echo/get?X=test">GET request</a><br/>
-<br/>
+<div id="root"></div>
 
-<a href="/ajax/user">User list</a><br/>
-<a href="/ajax/user?id=1">User 1</a><br/>
-<a href="/ajax/user?id=2">User 2</a><br/>
-<br/>
-
-<a href="/ajax/authority">Authority list</a><br/>
-<a href="/ajax/authority?id=1">Authority 1</a><br/>
-<a href="/ajax/authority?id=2">Authority 2</a><br/>
-<a href="/ajax/authority?userId=1">Authority of the user 1</a><br/>
-<a href="/ajax/authority?userId=2">Authority of the user 2</a><br/>
-<br/>
-
-<a href="/ajax/activity">Activity list</a><br/>
-<a href="/ajax/activity?id=1">Activity 1</a><br/>
-<a href="/ajax/activity?authorityId=1">Activity for authority 1</a><br/>
-<br/>
+<script src="js/app.js" type="text/babel"></script>
 </body>
 </html>
