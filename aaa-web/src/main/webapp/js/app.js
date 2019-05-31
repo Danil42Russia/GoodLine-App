@@ -196,7 +196,7 @@ class Menu extends React.Component {
 
         return (
             <div>
-                <div>
+                <div id={"menu"}>
                     <button onClick={() => this.setState({name: "user"})}>User list</button>
                     <button onClick={() => this.setState({name: "authority"})}>Authority list</button>
                     <button onClick={() => this.setState({name: "activity"})}>Activity list</button>

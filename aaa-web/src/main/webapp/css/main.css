@@ -1,0 +1,17 @@
+body {
+    font-size: 24px;
+}
+
+#menu {
+    margin-bottom: 15px;
+}
+
+button {
+    font-size: 24px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+table, tr, td, th {
+    border: 1px black solid;
+}
