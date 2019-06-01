@@ -16,18 +16,10 @@ class User extends React.Component {
         }
     }
 
-    componentWillMount() {
-        jQuery.ajax({
-            url: "/ajax/user",
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                this.setState({data: data});
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.error(this.url, status, err.toString());
-            }.bind(this)
-        });
+    async componentWillMount() {
+        const res = await fetch('/ajax/user');
+        const data = await res.json();
+        this.setState({data: data});
     }
 
     render() {
@@ -65,18 +57,10 @@ class Authority extends React.Component {
         }
     }
 
-    componentWillMount() {
-        jQuery.ajax({
-            url: "/ajax/authority",
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                this.setState({data: data});
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.error(this.url, status, err.toString());
-            }.bind(this)
-        });
+    async componentWillMount() {
+        const res = await fetch('/ajax/authority');
+        const data = await res.json();
+        this.setState({data: data});
     }
 
     render() {
@@ -118,18 +102,10 @@ class Activity extends React.Component {
         }
     }
 
-    componentWillMount() {
-        jQuery.ajax({
-            url: "/ajax/activity",
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                this.setState({data: data});
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.error(this.url, status, err.toString());
-            }.bind(this)
-        });
+    async componentWillMount() {
+        const res = await fetch('/ajax/activity');
+        const data = await res.json();
+        this.setState({data: data});
     }
 
     render() {
