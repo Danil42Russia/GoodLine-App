@@ -43,6 +43,9 @@ allprojects {
         implementation group: "org.hibernate", name: "hibernate-c3p0", version: "$versions.hibernate_orm"
 
         implementation group: "com.google.inject", name: "guice", version: "$versions.guice"
+
+        implementation group: "com.h2database", name: "h2", version: "$versions.h2_jdbc"
+        implementation group: "org.postgresql", name: "postgresql", version: "$versions.postgresql_jdbc"
     }
 
     task stage(dependsOn: [':aaa-web:buildProduct'])

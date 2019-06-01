@@ -16,6 +16,7 @@ versions.gretty = "2.3.1"
 versions.guice = "4.2.2"
 versions.hibernate_orm = "5.4.2.Final"
 versions.h2_jdbc = "1.4.199"
+versions.postgresql_jdbc = "42.2.5"
 
 // tools
 versions.jacoco = "0.8.4"
