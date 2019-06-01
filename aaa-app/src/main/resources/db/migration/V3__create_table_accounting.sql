@@ -1,6 +1,6 @@
 CREATE TABLE accounting
 (
-    id        INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id        SERIAL,
     login     NVARCHAR(32),
     res       NVARCHAR(32),
     roles     NVARCHAR(32),

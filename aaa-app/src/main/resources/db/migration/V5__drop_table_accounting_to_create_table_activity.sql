@@ -3,7 +3,7 @@ DROP TABLE accounting;
 
 CREATE TABLE activity
 (
-    id        INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id        SERIAL,
     id_user   INT,
     res       NVARCHAR(32),
     roles     NVARCHAR(32),

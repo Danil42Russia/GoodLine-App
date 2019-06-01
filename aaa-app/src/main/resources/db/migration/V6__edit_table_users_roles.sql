@@ -1,6 +1,6 @@
 create table users_roles_dg_tmp
 (
-    id      INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id      SERIAL,
     id_user INTEGER,
     id_role INTEGER,
     res     TEXT,

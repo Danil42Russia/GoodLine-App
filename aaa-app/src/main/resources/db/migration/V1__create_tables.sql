@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    id    INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id    SERIAL,
     login NVARCHAR(32) UNIQUE,
     pass  NVARCHAR(64),
     salt  NVARCHAR(64)
@@ -8,7 +8,7 @@ CREATE TABLE users
 
 CREATE TABLE roles
 (
-    id   INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id   SERIAL,
     name NVARCHAR(32) UNIQUE
 );
 

@@ -2,7 +2,7 @@ DROP TABLE activity;
 
 CREATE TABLE activity
 (
-    id    INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id    SERIAL,
     id_ur INTEGER,
     ds    NVARCHAR(16),
     de    NVARCHAR(16),
