@@ -1,9 +1,9 @@
 create table users_roles_dg_tmp
 (
-    id      SERIAL,
+    id      SERIAL PRIMARY KEY,
     id_user INTEGER,
     id_role INTEGER,
-    res     TEXT,
+    res     VARCHAR(16),
 
     FOREIGN KEY (id_user) REFERENCES users (id)
 );

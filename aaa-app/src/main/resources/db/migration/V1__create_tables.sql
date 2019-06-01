@@ -1,15 +1,15 @@
 CREATE TABLE users
 (
-    id    SERIAL,
-    login NVARCHAR(32) UNIQUE,
-    pass  NVARCHAR(64),
-    salt  NVARCHAR(64)
+    id    SERIAL PRIMARY KEY,
+    login VARCHAR(32) UNIQUE,
+    pass  VARCHAR(64),
+    salt  VARCHAR(64)
 );
 
 CREATE TABLE roles
 (
-    id   SERIAL,
-    name NVARCHAR(32) UNIQUE
+    id   SERIAL PRIMARY KEY,
+    name VARCHAR(32) UNIQUE
 );
 
 CREATE TABLE users_roles

@@ -3,12 +3,12 @@ DROP TABLE accounting;
 
 CREATE TABLE activity
 (
-    id        SERIAL,
+    id        SERIAL PRIMARY KEY,
     id_user   INT,
-    res       NVARCHAR(32),
-    roles     NVARCHAR(32),
-    dataStart NVARCHAR(16),
-    dataEnd   NVARCHAR(16),
+    res       VARCHAR(32),
+    roles     VARCHAR(32),
+    dataStart VARCHAR(16),
+    dataEnd   VARCHAR(16),
     volume    INTEGER,
 
     FOREIGN KEY (id_user) REFERENCES users (id)
