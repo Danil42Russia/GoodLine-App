@@ -19,7 +19,7 @@ class Menu extends React.Component {
                 break
             }
             case "activity": {
-                Child = Activity;
+                Child = ActivityMenu;
                 break
             }
             default: {
@@ -33,7 +33,7 @@ class Menu extends React.Component {
                 <div id={"menu"}>
                     <button onClick={() => this.setState({name: "user"})}>User Menu</button>
                     <button onClick={() => this.setState({name: "authority"})}>Authority Menu</button>
-                    <button onClick={() => this.setState({name: "activity"})}>Activity list</button>
+                    <button onClick={() => this.setState({name: "activity"})}>Activity Menu</button>
                 </div>
                 <div>
                     <Child/>
