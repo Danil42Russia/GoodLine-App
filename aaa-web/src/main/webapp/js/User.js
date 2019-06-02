@@ -39,6 +39,8 @@ class UserList extends React.Component {
     }
 }
 
+/* Search User By ID */
+
 class SearchUserByID extends React.Component {
     constructor(props) {
         super(props);
@@ -106,6 +108,8 @@ class UserByID extends React.Component {
         )
     }
 }
+
+/* User Menu */
 
 class UserMenu extends React.Component {
     constructor(props) {

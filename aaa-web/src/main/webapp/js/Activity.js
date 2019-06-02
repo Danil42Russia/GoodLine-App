@@ -197,6 +197,8 @@ class ActivityByAuthorityID extends React.Component {
     }
 }
 
+/* Activity Menu */
+
 class ActivityMenu extends React.Component {
     constructor(props) {
         super(props);

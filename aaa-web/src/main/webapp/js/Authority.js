@@ -191,6 +191,8 @@ class AuthorityByUserID extends React.Component {
     }
 }
 
+/* Authority Menu */
+
 class AuthorityMenu extends React.Component {
     constructor(props) {
         super(props);
