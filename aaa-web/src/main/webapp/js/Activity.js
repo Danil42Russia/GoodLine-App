@@ -8,7 +8,7 @@ class Activity extends React.Component {
     }
 
     async componentWillMount() {
-        const res = await fetch('/ajax/activity');
+        const res = await fetch(config.activityUrl);
         const data = await res.json();
         this.setState({data: data});
     }

@@ -8,7 +8,7 @@ class Authority extends React.Component {
     }
 
     async componentWillMount() {
-        const res = await fetch('/ajax/authority');
+        const res = await fetch(config.authorityUrl);
         const data = await res.json();
         this.setState({data: data});
     }

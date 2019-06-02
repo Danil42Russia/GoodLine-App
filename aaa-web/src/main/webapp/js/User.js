@@ -8,7 +8,7 @@ class User extends React.Component {
     }
 
     async componentWillMount() {
-        const res = await fetch('/ajax/user');
+        const res = await fetch(config.userUrl);
         const data = await res.json();
         this.setState({data: data});
     }
