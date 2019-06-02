@@ -93,10 +93,12 @@ class UserByID extends React.Component {
                     </thead>
                     <tbody>
                     {
-                        <tr key={this.state.data.id}>
-                            <td>{this.state.data.id}</td>
-                            <td>{this.state.data.login}</td>
-                        </tr>
+                        this.state.data.map(item => (
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.login}</td>
+                            </tr>
+                        ))
                     }
                     </tbody>
                 </table>

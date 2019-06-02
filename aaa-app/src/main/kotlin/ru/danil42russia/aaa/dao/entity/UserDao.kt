@@ -14,10 +14,10 @@ class UserDao {
             .resultList
     }
 
-    fun getUserByID(id: Int): EntityUser {
+    fun getUserByID(id: Int): List<EntityUser> {
         return em
             .createQuery("SELECT u FROM user u WHERE u.id = :id ", EntityUser::class.java)
             .setParameter("id", id)
-            .singleResult
+            .resultList
     }
 }

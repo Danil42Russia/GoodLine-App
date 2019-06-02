@@ -35,7 +35,7 @@ class UserServlet : HttpServlet() {
             }
             else -> {
                 val user = dao.getUserByID(request.getParameter("id").toInt())
-                Json.stringify(EntityUser.serializer(), user)
+                Json.stringify(EntityUser.serializer().list, user)
             }
         }
 
