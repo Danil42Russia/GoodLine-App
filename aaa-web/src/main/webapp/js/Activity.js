@@ -78,8 +78,6 @@ class ActivityByID extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log("1");
-
         this.state = {
             data: []
         }
@@ -155,8 +153,6 @@ class SearchActivityByAuthorityID extends React.Component {
 class ActivityByAuthorityID extends React.Component {
     constructor(props) {
         super(props);
-
-        console.log("1");
 
         this.state = {
             data: []

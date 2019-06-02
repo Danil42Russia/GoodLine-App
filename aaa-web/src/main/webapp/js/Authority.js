@@ -76,8 +76,6 @@ class AuthorityByID extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log("1");
-
         this.state = {
             data: []
         }
@@ -151,8 +149,6 @@ class SearchAuthorityByUserID extends React.Component {
 class AuthorityByUserID extends React.Component {
     constructor(props) {
         super(props);
-
-        console.log("1");
 
         this.state = {
             data: []

@@ -70,8 +70,6 @@ class UserByID extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log("1");
-
         this.state = {
             data: []
         }
