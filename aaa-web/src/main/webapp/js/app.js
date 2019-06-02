@@ -15,7 +15,7 @@ class Menu extends React.Component {
                 break
             }
             case "authority": {
-                Child = Authority;
+                Child = AuthorityMenu;
                 break
             }
             case "activity": {
@@ -32,7 +32,7 @@ class Menu extends React.Component {
             <div>
                 <div id={"menu"}>
                     <button onClick={() => this.setState({name: "user"})}>User Menu</button>
-                    <button onClick={() => this.setState({name: "authority"})}>Authority list</button>
+                    <button onClick={() => this.setState({name: "authority"})}>Authority Menu</button>
                     <button onClick={() => this.setState({name: "activity"})}>Activity list</button>
                 </div>
                 <div>
