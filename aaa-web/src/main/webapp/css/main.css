@@ -15,3 +15,11 @@ button {
 table, tr, td, th {
     border: 1px black solid;
 }
+
+#search {
+    margin-bottom: 5px;
+}
+
+input {
+    height: 22px;
+}
