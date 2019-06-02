@@ -64,7 +64,7 @@ class SearchAuthorityByID extends React.Component {
                 </div>
                 {
                     this.state.isClick ?
-                        <AuthorityByID id={this.searchInput.current.value}/> :
+                        <AuthorityByID ID={this.searchInput.current.value}/> :
                         null
                 }
             </div>
@@ -82,7 +82,7 @@ class AuthorityByID extends React.Component {
     }
 
     async componentWillMount() {
-        const res = await fetch(config.authorityUrl + "?id=" + this.props.id);
+        const res = await fetch(config.authorityUrl + "?id=" + this.props.ID);
         const data = await res.json();
         this.setState({data: data});
     }
@@ -138,7 +138,7 @@ class SearchAuthorityByUserID extends React.Component {
                 </div>
                 {
                     this.state.isClick ?
-                        <AuthorityByUserID id={this.searchInput.current.value}/> :
+                        <AuthorityByUserID userID={this.searchInput.current.value}/> :
                         null
                 }
             </div>
@@ -156,7 +156,7 @@ class AuthorityByUserID extends React.Component {
     }
 
     async componentWillMount() {
-        const res = await fetch(config.authorityUrl + "?userId=" + this.props.id);
+        const res = await fetch(config.authorityUrl + "?userId=" + this.props.userID);
         const data = await res.json();
         this.setState({data: data});
     }

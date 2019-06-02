@@ -58,7 +58,7 @@ class SearchUserByID extends React.Component {
                 </div>
                 {
                     this.state.isClick ?
-                        <UserByID id={this.searchInput.current.value}/> :
+                        <UserByID ID={this.searchInput.current.value}/> :
                         null
                 }
             </div>
@@ -76,7 +76,7 @@ class UserByID extends React.Component {
     }
 
     async componentWillMount() {
-        const res = await fetch(config.userUrl + "?id=" + this.props.id);
+        const res = await fetch(config.userUrl + "?id=" + this.props.ID);
         const data = await res.json();
         this.setState({data: data});
     }
@@ -135,7 +135,7 @@ class UserMenu extends React.Component {
             <div>
                 <div id={"menu"}>
                     <button onClick={() => this.setState({name: "userList"})}>User list</button>
-                    <button onClick={() => this.setState({name: "userByID"})}>User by id</button>
+                    <button onClick={() => this.setState({name: "userByID"})}>User by ID</button>
                 </div>
                 <div>
                     <Child/>
