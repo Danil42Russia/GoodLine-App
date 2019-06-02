@@ -1,12 +1,3 @@
-class None extends React.Component {
-    render() {
-        return (
-            <div>
-            </div>
-        )
-    }
-}
-
 class Menu extends React.Component {
     constructor(props) {
         super(props);
