@@ -11,5 +11,7 @@ open class ServletStages : ServletModule() {
         serve("/ajax/user").with(UserServlet::class.java)
         serve("/ajax/authority").with(AuthorityServlet::class.java)
         serve("/ajax/activity").with(ActivityServlet::class.java)
+
+        serve("/ajax/login").with(LoginServlet::class.java)
     }
 }

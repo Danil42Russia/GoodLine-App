@@ -24,6 +24,8 @@ open class ModuleStages : AbstractModule() {
         bind(ActivityDao::class.java)
         bind(ActivityServlet::class.java)
 
+        bind(LoginServlet::class.java)
+
         bindListener(Matchers.any(), Log4JTypeListener())
 
         bind(EntityManager::class.java).toProvider(EntityManagerProvider::class.java)
