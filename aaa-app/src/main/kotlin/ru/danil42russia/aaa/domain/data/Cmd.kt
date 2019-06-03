@@ -1,5 +1,8 @@
 package ru.danil42russia.aaa.domain.data
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Cmd(
     val login: String,
     val pass: String,
@@ -8,5 +11,6 @@ data class Cmd(
     val ds: String,
     val de: String,
     val vol: String,
-    val help: Boolean
+    @Transient
+    val help: Boolean = false
 )
