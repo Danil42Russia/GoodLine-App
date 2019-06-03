@@ -1,1 +1,1 @@
-web: ./gradlew aaa-web:buildProduct --configure-on-demand --no-daemon && aaa-web/build/output/aaa-web/start.sh
+web: aaa-web/build/output/aaa-web/start.sh
