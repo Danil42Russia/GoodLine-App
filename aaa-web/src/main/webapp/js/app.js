@@ -22,6 +22,10 @@ class Menu extends React.Component {
                 Child = ActivityMenu;
                 break
             }
+            case "login": {
+                Child = LoginMenu;
+                break
+            }
             default: {
                 Child = None;
                 break
@@ -31,6 +35,7 @@ class Menu extends React.Component {
         return (
             <div>
                 <div id={"menu"}>
+                    <button onClick={() => this.setState({name: "login"})}>Login Menu</button>
                     <button onClick={() => this.setState({name: "user"})}>User Menu</button>
                     <button onClick={() => this.setState({name: "authority"})}>Authority Menu</button>
                     <button onClick={() => this.setState({name: "activity"})}>Activity Menu</button>
