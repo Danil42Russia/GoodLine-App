@@ -1,12 +1,44 @@
-function createBlogPost(data) {
-    const formData = new FormData(data);
-
-    fetch(config.loginUrl, {
-        method: 'POST',
-        body: formData,
+function postData(data) {
+    fetch(config.loginUrl + "?json=" + JSON.stringify(data), {
+        method: 'POST'
     }).then(function (response) {
-        console.log(response.text())
+        return response.text();
+    }).then(function (text) {
+        codeToName(text);
     }).catch(err => err);
+}
+
+function codeToName(code) {
+    switch (code) {
+        case "0":
+            alert("SUCCESS");
+            break;
+        case "1":
+            alert("HELP");
+            break;
+        case "2":
+            alert("BAD LOGIN FORMAT");
+            break;
+        case "3":
+            alert("BAD LOGIN");
+            break;
+        case "4":
+            alert("BAD PASSWORD");
+            break;
+        case "5":
+            alert("BAD ROLE");
+            break;
+        case "6":
+            alert("NOT PERMISSION");
+            break;
+        case "7":
+            alert("INVALID DATE");
+            break;
+        case "8":
+            alert("INVALID VOLUME");
+            break;
+
+    }
 }
 
 class LoginMenu extends React.Component {
@@ -37,13 +69,13 @@ class LoginMenu extends React.Component {
     }
 
     handleSubmit(event) {
-        createBlogPost(this.form);
+        postData(this.state);
         event.preventDefault();
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} ref={el => (this.form = el)}>
+            <form onSubmit={this.handleSubmit}>
 
                 {/* Type 3*/}
                 <p>Login: <input
